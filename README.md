@@ -27,20 +27,21 @@ $ sudo systemctl enable lightdm ( if we use lightdm, otherwise "gdm" - GNOME, "s
 ```
 
 
+
 ## Post Installation
-### i3 config
+#### i3 config
 ```
 $ nvim ~/.config/i3/config
 
 ( Update rofi, kitty )
 ```
 
-### Fonts
+#### Fonts
 ```
 $ sudo pacman -S otf-font-awesome otf-cascadia-code ttf-fira-code ttf-droid ttf-joypixels ttf-nerd-fonts-symbols ttf-font-icons ttf-ionicons 
 ```
 
-### Install wifi for Kernel module 
+#### Install wifi for Kernel module 
 ```
 * Install
 
@@ -62,24 +63,24 @@ $ make
 $ sudo make install
 ```
 
-### Neovim plug manager
+#### Neovim plug manager
 ```
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 ```
 
-### Oh-my-bash
+#### Oh-my-bash
 ```
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
 ```
 
-### Remove orphans
+#### Remove orphans
 ```
 $ sudo pacman -Qtdq
 $ sudo pacman -Rns $(pacman -Qtdq)
 ```
 
-### Install Yay
+#### Install Yay
 ```
 $ cd /opt
 $ sudo git clone https://aur.archlinux.org/yay.git
@@ -88,7 +89,7 @@ $ cd yay
 $ makepkg -si
 ```
 
-### Install AUR packages
+#### Install AUR packages
 ```
 $ yay -S polybar pamac-aur zoom visual-studio-code-bin gotop ttf-ms-fonts ttf-iosevka ttf-icomoon-feather
 ( $ yay -S gruvbox-material-gtk-theme-git gruvbox-material-icon-theme-git heroku-cli optimus-manager optimus-manager-qt betterlockscreen )
@@ -97,27 +98,15 @@ $ yay -S polybar pamac-aur zoom visual-studio-code-bin gotop ttf-ms-fonts ttf-io
 ( $ sudo systemctl start optimus-manager )
 ```
 
-### Set up Pamac Manager
-```
-$ su
-$ cd /etc/polkit-1/rules.d
-$ nvim 99-pamac.rules
-
-polkit.addRule(function(action, subject) {
-	if (action.id.indexOf("org.freedesktop.pamac-manager.")) {
-		return polkit.Result.YES;
-	}
-});
-```
-
-### Python packages
+#### Install Python packages
 ```
 $ sudo pacman -S python-pygame python-requests python-pandas python-beautifulsoup4 python-openpyxl
 ```
 
 
+
 ## App configures
-### Ranger
+#### Ranger
 ```
 cp /usr/share/doc/ranger/config/rifle.conf .config/ranger/
 cp /usr/share/doc/ranger/config/rc.conf .config/ranger/
@@ -150,23 +139,36 @@ export VISUAL=nvim;
 export EDITOR=nvim;
 ```
 
-### Core editor of git
+#### No pass for Pamac Manager
+```
+$ su
+$ cd /etc/polkit-1/rules.d
+$ nvim 99-pamac.rules
+
+polkit.addRule(function(action, subject) {
+	if (action.id.indexOf("org.freedesktop.pamac-manager.")) {
+		return polkit.Result.YES;
+	}
+});
+```
+
+#### Core editor of git
 ```
 $ git config --global core.editor 'nvim'
 ```
 
-### Betterlockscreen
+#### Betterlockscreen
 ```
 $ sudo pacman -S xorg-xdpyinfo xorg-xrandr bc feh
 $ betterlockscreen -u Pictures/arch.png -b 1.0
 ```
 
-### Lightdm settings
+#### Lightdm settings
 ```
 Note: Put PNG or JPG images in /usr/share/pixmaps
 ```
 
-### Powerline Terminal
+#### Powerline Terminal
 ```
 OSH_THEME="cupcake" 	( .bashrc )
 $ nvim .oh-my-bash/themes/cupcake/cupcake.theme.sh
