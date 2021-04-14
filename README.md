@@ -9,7 +9,7 @@ $ sudo pacman -Syy
 
 ## Install packages
 ```
-$ sudo pacman -S (xf86-video-intel/xf86-video-amdgpu) (nvidia-lts/nvidia nvidia-utils nvidia-settings) xorg-server xorg-xinit rofi nitrogen kitty qutebrowser firefox lxappearance vlc gimp  file-roller pavucontrol lightdm lightdm-gtk-greeter neofetch gufw clamtk nodejs npm ctags ranger the_silver_searcher plank libreoffice-fresh
+$ sudo pacman -S (xf86-video-intel/xf86-video-amdgpu) (nvidia-lts/nvidia nvidia-utils nvidia-settings) xorg-server xorg-xinit i3-gaps i3lock i3status i3blocks rofi nitrogen kitty qutebrowser firefox lxappearance vlc gimp  file-roller pavucontrol lightdm lightdm-gtk-greeter neofetch gufw clamtk nodejs npm ctags ranger the_silver_searcher plank libreoffice-fresh
 
 ( $ sudo pacman -S lightdm-gtk-greeter-settings pcmanfm evince gpicview nnn)
 ```
