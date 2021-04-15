@@ -11,7 +11,9 @@ $ sudo pacman -Syy
 ```
 $ sudo pacman -S (xf86-video-intel/xf86-video-amdgpu) (nvidia-lts/nvidia nvidia-utils nvidia-settings) xorg-server xorg-xinit i3-gaps i3lock i3status i3blocks rofi nitrogen kitty qutebrowser firefox lxappearance vlc gimp  file-roller pavucontrol lightdm lightdm-gtk-greeter neofetch gufw clamtk nodejs npm ctags ranger the_silver_searcher plank libreoffice-fresh
 
-( $ sudo pacman -S lightdm-gtk-greeter-settings pcmanfm evince gpicview nnn)
+( $ sudo pacman -S lightdm-gtk-greeter-settings evince nnn)
+
+pcmanfm gpicview
 ```
  
 ## Prepare for start up
@@ -38,7 +40,7 @@ $ nvim ~/.config/i3/config
 
 #### Fonts
 ```
-$ sudo pacman -S otf-font-awesome otf-cascadia-code ttf-fira-code ttf-droid ttf-joypixels ttf-nerd-fonts-symbols ttf-font-icons ttf-ionicons 
+$ sudo pacman -S otf-font-awesome otf-cascadia-code ttf-fira-code ttf-droid ttf-joypixels ttf-nerd-fonts-symbols ttf-ionicons 
 ```
 
 #### Install wifi for Kernel module 
@@ -91,7 +93,7 @@ $ makepkg -si
 
 #### Install AUR packages
 ```
-$ yay -S polybar pamac-aur zoom visual-studio-code-bin gotop ttf-ms-fonts ttf-iosevka ttf-icomoon-feather
+$ yay -S polybar pamac-aur zoom visual-studio-code-bin gotop ttf-ms-fonts ttf-iosevka ttf-icomoon-feather ttf-font-icons
 ( $ yay -S gruvbox-material-gtk-theme-git gruvbox-material-icon-theme-git heroku-cli optimus-manager optimus-manager-qt betterlockscreen )
 
 ( $ sudo systemctl enable optimus-manager )
