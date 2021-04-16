@@ -93,8 +93,8 @@ $ makepkg -si
 
 #### Install AUR packages
 ```
-$ yay -S polybar pamac-aur zoom visual-studio-code-bin gotop ttf-ms-fonts ttf-iosevka ttf-icomoon-feather ttf-font-icons
-( $ yay -S gruvbox-material-gtk-theme-git gruvbox-material-icon-theme-git heroku-cli optimus-manager optimus-manager-qt betterlockscreen )
+$ yay -S pamac-aur zoom visual-studio-code-bin gotop ttf-ms-fonts ttf-iosevka ttf-icomoon-feather ttf-font-icons
+( $ yay -S gruvbox-material-gtk-theme-git gruvbox-material-icon-theme-git optimus-manager optimus-manager-qt heroku-cli polybar)
 
 ( $ sudo systemctl enable optimus-manager )
 ( $ sudo systemctl start optimus-manager )
