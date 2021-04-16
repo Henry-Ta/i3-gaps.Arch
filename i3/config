@@ -1,0 +1,2 @@
+# Nitrogen
+exec --no-startup-id nitrogen --restore
