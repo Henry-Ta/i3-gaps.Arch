@@ -11,9 +11,9 @@ $ sudo pacman -Syy
 ```
 $ sudo pacman -S (xf86-video-intel/xf86-video-amdgpu) (nvidia-lts/nvidia nvidia-utils nvidia-settings) xorg-server xorg-xinit i3-gaps i3lock i3status i3blocks rofi nitrogen kitty qutebrowser firefox lxappearance vlc gimp  file-roller pavucontrol lightdm lightdm-gtk-greeter neofetch gufw clamtk nodejs npm ctags ranger the_silver_searcher plank libreoffice-fresh
 
-( $ sudo pacman -S lightdm-gtk-greeter-settings evince nnn)
+( $ sudo pacman -S lightdm-gtk-greeter-settings evince galculator )
 
-pcmanfm gpicview
+pcmanfm gpicview nnn
 ```
  
 ## Prepare for start up
@@ -129,7 +129,7 @@ git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger
 
 echo "default_linemode devicons" >> ~/.config/ranger/rc.conf
 
-~/.config/ranger/plugins/ranger_devicons   
+nvim ~/.config/ranger/plugins/ranger_devicons/__init__.py   
 
 
 ( Enable document view in nvim from ranger )
