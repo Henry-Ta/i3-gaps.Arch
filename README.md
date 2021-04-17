@@ -9,7 +9,7 @@ $ sudo pacman -Syy
 
 ## Install packages
 ```
-$ sudo pacman -S (xf86-video-intel/xf86-video-amdgpu) (nvidia-lts/nvidia nvidia-utils nvidia-settings) xorg-server xorg-xinit i3-gaps i3lock i3status i3blocks rofi nitrogen kitty qutebrowser firefox lxappearance vlc gimp  file-roller pavucontrol lightdm lightdm-gtk-greeter neofetch gufw clamtk nodejs npm ctags ranger the_silver_searcher plank libreoffice-fresh
+$ sudo pacman -S (xf86-video-intel/xf86-video-amdgpu) (nvidia-lts/nvidia nvidia-utils nvidia-settings) xorg-server xorg-xinit i3-gaps i3lock i3status i3blocks rofi nitrogen picom kitty qutebrowser firefox lxappearance vlc gimp  file-roller pavucontrol lightdm lightdm-gtk-greeter neofetch gufw clamtk nodejs npm ctags ranger the_silver_searcher plank libreoffice-fresh
 
 ( $ sudo pacman -S lightdm-gtk-greeter-settings evince galculator )
 
@@ -93,8 +93,8 @@ $ makepkg -si
 
 #### Install AUR packages
 ```
-$ yay -S pamac-aur zoom visual-studio-code-bin gotop ttf-ms-fonts ttf-iosevka ttf-icomoon-feather ttf-font-icons
-( $ yay -S gruvbox-material-gtk-theme-git gruvbox-material-icon-theme-git optimus-manager optimus-manager-qt heroku-cli polybar)
+$ yay -S pamac-aur zoom visual-studio-code-bin gotop ttf-iosevka ttf-icomoon-feather ttf-font-icons gruvbox-material-gtk-theme-git gruvbox-material-icon-theme-git optimus-manager optimus-manager-qt
+( $ yay -S gruvbox-material-gtk-theme-git gruvbox-material-icon-theme-git heroku-cli polybar ttf-ms-fonts)
 
 ( $ sudo systemctl enable optimus-manager )
 ( $ sudo systemctl start optimus-manager )
@@ -102,7 +102,7 @@ $ yay -S pamac-aur zoom visual-studio-code-bin gotop ttf-ms-fonts ttf-iosevka tt
 
 #### Install Python packages
 ```
-$ sudo pacman -S python-pygame python-requests python-pandas python-beautifulsoup4 python-openpyxl
+$ sudo pacman -S python-pylint python-pygame python-requests python-pandas python-beautifulsoup4 python-openpyxl
 ```
 
 
@@ -113,7 +113,7 @@ $ sudo pacman -S python-pygame python-requests python-pandas python-beautifulsou
 cp /usr/share/doc/ranger/config/rifle.conf .config/ranger/
 cp /usr/share/doc/ranger/config/rc.conf .config/ranger/
 
-$ sudo pacman -S highlight mediainfo w3m python-pillow
+$ sudo pacman -S highlight mediainfo w3m python-pillow atool
 
 $ nvim .config/ranger/rc.conf
 
