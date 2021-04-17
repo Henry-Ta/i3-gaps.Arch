@@ -1,2 +1,5 @@
 # Nitrogen
 exec --no-startup-id nitrogen --restore
+
+# Picom
+exec picom -f
