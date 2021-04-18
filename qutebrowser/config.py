@@ -16,7 +16,7 @@ c.tabs.padding = {
     "left": 5,
     "right": 5,
     "top": 3,
-    "bottom": 5,
+    "bottom": 4,
 }
 
 # The page to open if :open -t/-b/-w is used without URL. Use
