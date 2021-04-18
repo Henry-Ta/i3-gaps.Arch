@@ -9,11 +9,11 @@ $ sudo pacman -Syy
 
 ## Install packages
 ```
-$ sudo pacman -S (xf86-video-intel/xf86-video-amdgpu) (nvidia-lts/nvidia nvidia-utils nvidia-settings) xorg-server xorg-xinit i3-gaps i3lock i3status i3blocks rofi nitrogen picom kitty qutebrowser firefox lxappearance vlc gimp  file-roller pavucontrol lightdm lightdm-gtk-greeter neofetch gufw clamtk nodejs npm ctags ranger the_silver_searcher plank libreoffice-fresh
+$ sudo pacman -S (xf86-video-intel/xf86-video-amdgpu) (nvidia-lts/nvidia nvidia-utils nvidia-settings) xorg-server xfce4 xfce4-goodies kitty qutebrowser firefox chromium vlc gimp file-roller pavucontrol lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings evince galculator neofetch gufw clamtk nodejs npm ctags the_silver_searcher libreoffice-fresh
 
-( $ sudo pacman -S lightdm-gtk-greeter-settings evince galculator )
+( $ sudo pacman -S  xorg-xinit i3-gaps i3lock i3status i3blocks rofi nitrogen lxappearance )
 
-pcmanfm gpicview nnn
+pcmanfm gpicview ranger nnn picom 
 ```
  
 ## Prepare for start up
@@ -94,7 +94,7 @@ $ makepkg -si
 #### Install AUR packages
 ```
 $ yay -S pamac-aur zoom visual-studio-code-bin gotop ttf-iosevka ttf-icomoon-feather ttf-font-icons gruvbox-material-gtk-theme-git gruvbox-material-icon-theme-git optimus-manager optimus-manager-qt
-( $ yay -S gruvbox-material-gtk-theme-git gruvbox-material-icon-theme-git heroku-cli polybar ttf-ms-fonts)
+( $ yay -S gruvbox-material-gtk-theme-git gruvbox-material-icon-theme-git heroku-cli polybar picom-ibhagwan-git)
 
 ( $ sudo systemctl enable optimus-manager )
 ( $ sudo systemctl start optimus-manager )
