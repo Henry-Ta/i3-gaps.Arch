@@ -39,4 +39,4 @@ settings:
     global:
       DEFAULT: https://www.google.ca/search?q={}
   zoom.default:
-    global: '125'
+    global: '135'
