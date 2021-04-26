@@ -6,17 +6,23 @@
 
 config_version: 2
 settings:
-  content.notifications:
+  content.notifications.enabled:
+    https://6b33.net: false
     https://www.facebook.com: false
     https://www.reddit.com: false
+    https://www.youtube.com: false
   fonts.default_family:
-    global: Fira Code
+    global: Cascadia Code
   fonts.default_size:
-    global: 16pt
+    global: 17pt
+  fonts.web.size.default:
+    global: 17
   fonts.web.size.default_fixed:
-    global: 16
+    global: 17
   fonts.web.size.minimum:
-    global: 16
+    global: 15
+  fonts.web.size.minimum_logical:
+    global: 15
   statusbar.show:
     global: in-mode
   tabs.favicons.scale:
@@ -31,7 +37,7 @@ settings:
     global: 3
   tabs.padding:
     global:
-      bottom: 5
+      bottom: 4
       left: 5
       right: 5
       top: 3

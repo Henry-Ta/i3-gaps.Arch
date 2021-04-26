@@ -112,7 +112,7 @@ let g:NERDTreeWinPos = 'right'
 
 "------------------------------------- Devicons
 set guifont=DroidSansMono\ Nerd\ Font\ 11
-let g:airline_powerline_fonts = 0 
+let g:airline_powerline_fonts = 1
 
 
 "------------------------------------- Syntax Highlight

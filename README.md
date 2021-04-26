@@ -13,7 +13,7 @@ $ sudo pacman -S (xf86-video-intel/xf86-video-amdgpu) (nvidia-lts/nvidia nvidia-
 
 ( $ sudo pacman -S  xorg-xinit i3-gaps i3lock i3status i3blocks rofi nitrogen lxappearance )
 
-pcmanfm gpicview ranger nnn picom 
+pcmanfm gpicview ranger nnn picom geany 
 ```
  
 ## Prepare for start up
@@ -112,6 +112,7 @@ $ sudo pacman -S python-pylint python-pygame python-requests python-pandas pytho
 ```
 cp /usr/share/doc/ranger/config/rifle.conf .config/ranger/
 cp /usr/share/doc/ranger/config/rc.conf .config/ranger/
+cp /usr/share/doc/ranger/config/commands.py .config/ranger/
 
 $ sudo pacman -S highlight mediainfo w3m python-pillow atool
 
@@ -174,4 +175,9 @@ Note: Put PNG or JPG images in /usr/share/pixmaps
 ```
 OSH_THEME="cupcake" 	( .bashrc )
 $ nvim .oh-my-bash/themes/cupcake/cupcake.theme.sh
+```
+
+#### Failed to update core (unable to lock database)
+```
+$ sudo rm /var/lib/pacman/db.lck
 ```
