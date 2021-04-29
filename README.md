@@ -13,7 +13,7 @@ $ sudo pacman -S (xf86-video-intel/xf86-video-amdgpu) (nvidia-lts/nvidia nvidia-
 
 ( $ sudo pacman -S  xorg-xinit i3-gaps i3lock i3status i3blocks rofi nitrogen lxappearance )
 
-pcmanfm gpicview ranger nnn picom geany 
+pcmanfm gpicview ranger nnn picom geany geany-plugins
 ```
  
 ## Prepare for start up
