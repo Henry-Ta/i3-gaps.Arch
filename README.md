@@ -110,18 +110,20 @@ $ sudo pacman -S python-pylint python-pygame python-requests python-pandas pytho
 ## App configures
 #### Ranger
 ```
-cp /usr/share/doc/ranger/config/rifle.conf .config/ranger/
-cp /usr/share/doc/ranger/config/rc.conf .config/ranger/
-cp /usr/share/doc/ranger/config/commands.py .config/ranger/
+$ ranger --copy-config=all
 
-$ sudo pacman -S highlight mediainfo w3m python-pillow atool
+$ sudo pacman -S highlight ueberzug elinks atool unrar ffmpegthumbnailer
 
 $ nvim .config/ranger/rc.conf
 
 (Enable Image preview for ranger on Kitty)
 
 set preview_images true
-set preivew_images_method kitty
+set preivew_images_method ueberzug
+
+$ nvim .config/ranger/scope.sh
+
+(Comment out pdf preview as images)
 
 
 (Add icon to ranger)
