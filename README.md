@@ -169,6 +169,9 @@ $ betterlockscreen -u Pictures/arch.png -b 1.0
 #### Lightdm settings
 ```
 Note: Put PNG or JPG images in /usr/share/pixmaps
+
+$ sudo cp ~/Pictures/Wallpapers/1920x1080/lockscreen1.png /usr/share/pixmaps/
+
 ```
 
 #### Powerline Terminal
@@ -180,4 +183,11 @@ $ nvim .oh-my-bash/themes/cupcake/cupcake.theme.sh
 #### Failed to update core (unable to lock database)
 ```
 $ sudo rm /var/lib/pacman/db.lck
+```
+
+#### QtCreator
+```
+Enable run in terminal
+
+/usr/bin/kitty      -e
 ```

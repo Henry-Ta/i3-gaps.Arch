@@ -23,6 +23,8 @@ settings:
     global: 15
   fonts.web.size.minimum_logical:
     global: 15
+  qt.highdpi:
+    global: true
   statusbar.show:
     global: in-mode
   tabs.favicons.scale:
