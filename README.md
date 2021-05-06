@@ -11,9 +11,9 @@ $ sudo pacman -Syy
 ```
 $ sudo pacman -S (xf86-video-intel/xf86-video-amdgpu) (nvidia-lts/nvidia nvidia-utils nvidia-settings) xorg-server xfce4 xfce4-goodies kitty qutebrowser firefox chromium vlc gimp file-roller pavucontrol lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings evince galculator neofetch gufw clamtk nodejs npm ctags the_silver_searcher libreoffice-fresh
 
-( $ sudo pacman -S  xorg-xinit i3-gaps i3lock i3status i3blocks rofi nitrogen lxappearance )
+( $ sudo pacman -S xorg-xinit i3-gaps i3blocks rofi nitrogen lxappearance ranger )
 
-pcmanfm gpicview ranger nnn picom geany geany-plugins
+pcmanfm gpicview nnn picom geany geany-plugins
 ```
  
 ## Prepare for start up
@@ -142,6 +142,11 @@ $ nvim .bashrc
 force_color_prompt=yes
 export VISUAL=nvim;
 export EDITOR=nvim;
+
+
+$ set update_title true
+$ set line_number relative
+$ set one_indexed true
 ```
 
 #### No pass for Pamac Manager
