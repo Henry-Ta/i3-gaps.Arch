@@ -3,7 +3,7 @@ configuration {
 /*	width: 50;*/
 /*	lines: 15;*/
 /*	columns: 1;*/
-	font: "Cascadia Code 16";
+	font: "Fira Code 16";
 /*	bw: 1;*/
 /*	location: 0;*/
 /*	padding: 5;*/

@@ -9,16 +9,17 @@ $ sudo pacman -Syy
 
 ## Install packages
 ```
-$ sudo pacman -S (xf86-video-intel/xf86-video-amdgpu) (nvidia-lts/nvidia nvidia-utils nvidia-settings) xorg-server xfce4 xfce4-goodies kitty qutebrowser firefox chromium vlc gimp file-roller pavucontrol lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings evince galculator neofetch gufw clamtk nodejs npm ctags the_silver_searcher libreoffice-fresh
-
+$ sudo pacman -S (xf86-video-intel/xf86-video-amdgpu) (nvidia-lts/nvidia nvidia-utils nvidia-settings) xorg-server xfce4 xfce4-goodies 
 ( $ sudo pacman -S xorg-xinit i3-gaps i3blocks rofi nitrogen lxappearance ranger )
 
-pcmanfm gpicview nnn picom geany geany-plugins
+$ sudo pacman -S kitty qutebrowser firefox chromium vlc gimp file-roller pavucontrol lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings evince galculator neofetch gufw clamtk nodejs npm ctags the_silver_searcher libreoffice-fresh
+
+(pcmanfm gpicview nnn picom geany geany-plugins)
 ```
  
 ## Prepare for start up
 ```
-$ (cp /etc/X11/xinit/xinitrc .xinitrc)
+$ cp /etc/X11/xinit/xinitrc .xinitrc
 $ nvim .xinitrc
 
 exec i3
@@ -93,8 +94,9 @@ $ makepkg -si
 
 #### Install AUR packages
 ```
-$ yay -S pamac-aur zoom visual-studio-code-bin gotop ttf-iosevka ttf-icomoon-feather ttf-font-icons gruvbox-material-gtk-theme-git gruvbox-material-icon-theme-git optimus-manager optimus-manager-qt
-( $ yay -S gruvbox-material-gtk-theme-git gruvbox-material-icon-theme-git heroku-cli polybar picom-ibhagwan-git)
+$ yay -S pamac-aur zoom visual-studio-code-bin gotop ttf-iosevka ttf-icomoon-feather ttf-font-icons gruvbox-material-gtk-theme-git gruvbox-material-icon-theme-git optimus-manager optimus-manager-qt picom-ibhagwan-git
+
+( $ yay -S heroku-cli polybar )
 
 ( $ sudo systemctl enable optimus-manager )
 ( $ sudo systemctl start optimus-manager )
@@ -105,7 +107,16 @@ $ yay -S pamac-aur zoom visual-studio-code-bin gotop ttf-iosevka ttf-icomoon-fea
 $ sudo pacman -S python-pylint python-pygame python-requests python-pandas python-beautifulsoup4 python-openpyxl
 ```
 
+#### Install Steam
+```
+$ sudo nvim /etc/pacman.conf
+[multilib]
+Include = /etc/pacman.d/mirrorlist
 
+$ sudo pacman -S wqy-zenhei 
+$ sudo pacman -S steam
+Choose Nvidia vulcan (2)
+```
 
 ## App configures
 #### Ranger
@@ -197,4 +208,7 @@ $ sudo rm /var/lib/pacman/db.lck
 Enable run in terminal
 
 /usr/bin/kitty      -e
+
+$ mkdir -p ~/.config/QtProject/qtcreator/styles
+$ nvim ~/.config/QtProject/qtcreator/styles/gruvbox-dark.xml
 ```
