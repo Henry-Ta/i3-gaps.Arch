@@ -4,8 +4,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 
-    Plug 'w0rp/ale'
-
     Plug 'tpope/vim-surround'
 
     Plug 'tpope/vim-fugitive'
@@ -25,8 +23,16 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'jiangmiao/auto-pairs'
     Plug 'yggdroot/indentline'
+    Plug 'machakann/vim-sandwich'
 
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+    " For C/C++
+    Plug 'rhysd/vim-clang-format'        
+    Plug 'jackguo380/vim-lsp-cxx-highlight'
+
+    " Show Error
+    Plug 'scrooloose/syntastic'
 
 call plug#end()
 
@@ -43,6 +49,7 @@ colorscheme gruvbox
 "--------------------------------------- Vim Airline 
 let g:airline_theme='gruvbox' 
 let g:airline#extensions#tabline#enabled = 1 
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 
 "-----------------------------------------------GitGutter
@@ -57,9 +64,28 @@ set statusline+=%{GitStatus()}
 nnoremap <M-f> :FZF<CR>
 
 let g:fzf_action = {'alt-s': 'split','alt-v': 'vsplit'}
-" requires the_silver_searcher
-" used to ignore gitignore files
+let g:fzf_layout = { 'window': { 'width': 0.85, 'height': 0.85 }}
+
+"Customize fzf colors to match your color scheme
+let g:fzf_colors =          
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+"Requires the_silver_searcher to ignore gitignore files
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+
+let $FZF_DEFAULT_OPTS='--ansi --preview-window "right:60%" --layout reverse --preview "bat --style=numbers --color=always --line-range :500 {}"'
 
 
 "------------------------------------- Tag Bar
@@ -171,7 +197,28 @@ autocmd Filetype json :IndentLinesDisable
 
 
 "-----------------------------------------------Coc_Nvim
-let g:coc_global_extensions = ['coc-highlight', 'coc-emmet', 'coc-python', 'coc-css', 'coc-html', 'coc-phpls', 'coc-json', 'coc-prettier', 'coc-tsserver']
+let g:coc_global_extensions = ['coc-highlight', 'coc-emmet', 'coc-pyright', 'coc-css', 'coc-html', 'coc-phpls', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-clangd', 'coc-go']
+
+
+"----------------------------------------------------------------Vim_Clang_Format
+let g:clang_format#auto_format=1
+
+
+"------------------------------------------------Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+
+"-------------------------------------------------------------------Sandwich
+"Add: saiw ()
+"Delete: sdb
+"Replace: srb ()
 
 
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++SETTINGS++++++++++++++++++++++++++++++++++++++++++++++++++++++++" 
@@ -194,4 +241,5 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+nnoremap <A-q> <C-w>q
 nnoremap <A-=> <C-w>=

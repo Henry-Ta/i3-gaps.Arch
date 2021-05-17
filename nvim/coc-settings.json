@@ -1,4 +1,5 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["html, python"," javascript, php"],
-  "prettier.tabWidth":4 
+  "coc.preferences.formatOnSaveFiletypes": ["html","python","javascript","php"],
+  "prettier.tabWidth":4,
+  "clangd.semanticHighlighting": true
 }

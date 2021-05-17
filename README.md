@@ -10,9 +10,9 @@ $ sudo pacman -Syy
 ## Install packages
 ```
 $ sudo pacman -S (xf86-video-intel/xf86-video-amdgpu) (nvidia-lts/nvidia nvidia-utils nvidia-settings) xorg-server xfce4 xfce4-goodies 
-( $ sudo pacman -S xorg-xinit i3-gaps i3blocks rofi nitrogen lxappearance ranger )
+( $ sudo pacman -S i3-gaps i3blocks rofi nitrogen lxappearance ranger )
 
-$ sudo pacman -S kitty qutebrowser firefox chromium vlc gimp file-roller pavucontrol lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings evince galculator neofetch gufw clamtk nodejs npm ctags the_silver_searcher libreoffice-fresh
+$ sudo pacman -S kitty qutebrowser firefox chromium vlc gimp file-roller pavucontrol lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings evince galculator neofetch gufw clamtk libreoffice-fresh
 
 (pcmanfm gpicview nnn picom geany geany-plugins)
 ```
@@ -28,7 +28,6 @@ exec i3
 ```
 $ sudo systemctl enable lightdm ( if we use lightdm, otherwise "gdm" - GNOME, "sddm" - KDE )
 ```
-
 
 
 ## Post Installation
@@ -119,25 +118,34 @@ Choose Nvidia vulcan (2)
 ```
 
 ## App configures
+#### Neovim
+```
+$ sudo pacman -S clang nodejs npm ctags the_silver_searcher gopls
+```
+
+
 #### Ranger
 ```
-$ ranger --copy-config=all
+$ sudo pacman -S bat ueberzug elinks atool unrar ffmpegthumbnailer
 
-$ sudo pacman -S highlight ueberzug elinks atool unrar ffmpegthumbnailer
+$ ranger --copy-config=all
 
 $ nvim .config/ranger/rc.conf
 
-(Enable Image preview for ranger on Kitty)
-
 set preview_images true
 set preivew_images_method ueberzug
+set update_title true
+set line_number relative
+set one_indexed true
+
 
 $ nvim .config/ranger/scope.sh
 
 (Comment out pdf preview as images)
+(Comment out video thumbnail)
 
 
-(Add icon to ranger)
+( Add icon to ranger )
 
 git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
 
@@ -145,19 +153,16 @@ echo "default_linemode devicons" >> ~/.config/ranger/rc.conf
 
 nvim ~/.config/ranger/plugins/ranger_devicons/__init__.py   
 
+```
 
-( Enable document view in nvim from ranger )
-
+#### .bashrc
+```
 $ nvim .bashrc
 
 force_color_prompt=yes
 export VISUAL=nvim;
 export EDITOR=nvim;
-
-
-$ set update_title true
-$ set line_number relative
-$ set one_indexed true
+export BAT_THEME=gruvbox-dark
 ```
 
 #### No pass for Pamac Manager
