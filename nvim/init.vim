@@ -42,6 +42,7 @@ if (has("termguicolors"))
 endif
 
 syntax enable
+syntax on
 set background=dark
 colorscheme gruvbox 
 
@@ -50,6 +51,7 @@ colorscheme gruvbox
 let g:airline_theme='gruvbox' 
 let g:airline#extensions#tabline#enabled = 1 
 let g:airline#extensions#tabline#formatter = 'unique_tail'
+"let g:airline#extensions#tabline#formatter = 'default'
 
 
 "-----------------------------------------------GitGutter
@@ -86,6 +88,7 @@ let g:fzf_colors =
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 let $FZF_DEFAULT_OPTS='--ansi --preview-window "right:60%" --layout reverse --preview "bat --style=numbers --color=always --line-range :500 {}"'
+"let $FZF_DEFAULT_OPTS='--ansi --preview-window "right:60%" --layout reverse --preview "cat {}"'
 
 
 "------------------------------------- Tag Bar
