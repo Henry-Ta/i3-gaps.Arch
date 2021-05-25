@@ -63,7 +63,8 @@ set statusline+=%{GitStatus()}
 
 
 "------------------------------------- FzF
-nnoremap <M-f> :FZF<CR>
+"nnoremap <M-f> :FZF<CR>
+nnoremap <C-w>f :FZF<CR>
 
 let g:fzf_action = {'alt-s': 'split','alt-v': 'vsplit'}
 let g:fzf_layout = { 'window': { 'width': 0.85, 'height': 0.85 }}
@@ -88,11 +89,12 @@ let g:fzf_colors =
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 let $FZF_DEFAULT_OPTS='--ansi --preview-window "right:60%" --layout reverse --preview "bat --style=numbers --color=always --line-range :500 {}"'
-"let $FZF_DEFAULT_OPTS='--ansi --preview-window "right:60%" --layout reverse --preview "cat {}"'
 
 
 "------------------------------------- Tag Bar
-nnoremap <M-t> :TagbarToggle<CR>
+"nnoremap <M-t> :TagbarToggle<CR>
+nnoremap <C-w>t :TagbarToggle<CR>
+
 " let g:tagbar_indent = 3
 let g:tagbar_show_data_type = 1
 let g:tagbar_show_linenumbers = -1
@@ -112,8 +114,10 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 
 " nnoremap <leader>n :NERDTreeFocus<CR>
 " nnoremap <C-n> :NERDTree<CR>
-nnoremap <M-e> :NERDTreeToggle <CR>
 " nnoremap <C-f> :NERDTreeFind<CR>
+
+"nnoremap <M-e> :NERDTreeToggle <CR>
+nnoremap <C-w>e :NERDTreeToggle <CR>
 
 " -> Shift + I: toggle hidden files
 
@@ -240,9 +244,9 @@ set expandtab       " Expand TABs to spaces
 
 
 "-----------------------------------------------------Switch Windows 
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
-nnoremap <A-q> <C-w>q
-nnoremap <A-=> <C-w>=
+"nnoremap <A-h> <C-w>h
+"nnoremap <A-j> <C-w>j
+"nnoremap <A-k> <C-w>k
+"nnoremap <A-l> <C-w>l
+"nnoremap <A-q> <C-w>q
+"nnoremap <A-=> <C-w>=
