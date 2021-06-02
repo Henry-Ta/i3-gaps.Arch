@@ -28,7 +28,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
     " For C/C++
-    Plug 'rhysd/vim-clang-format'        
     Plug 'jackguo380/vim-lsp-cxx-highlight'
 
     " Show Error
@@ -206,9 +205,6 @@ autocmd Filetype json :IndentLinesDisable
 "-----------------------------------------------Coc_Nvim
 let g:coc_global_extensions = ['coc-highlight', 'coc-emmet', 'coc-pyright', 'coc-css', 'coc-html', 'coc-phpls', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-clangd', 'coc-go']
 
-
-"----------------------------------------------------------------Vim_Clang_Format
-let g:clang_format#auto_format=1
 
 
 "------------------------------------------------Syntastic

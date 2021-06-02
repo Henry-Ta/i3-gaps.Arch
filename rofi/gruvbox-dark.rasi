@@ -14,7 +14,7 @@
 * {
     /* Theme settings */
     highlight: bold italic;
-    scrollbar: true;
+    /*scrollbar: true;*/
 
     /* Gruvbox dark colors */
     gruvbox-dark-bg0:          #282828;

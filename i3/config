@@ -31,11 +31,18 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+#set $refresh_i3status killall -SIGUSR1 i3status
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+#bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# change volume or toggle mute
+bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks
+
+
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -86,7 +93,7 @@ bindsym $mod+Control+s split h
 bindsym $mod+Control+v split v
 
 # enter fullscreen mode for the focused container
-
+bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -199,7 +206,7 @@ set $fg #fbf1c7
 bar {
         status_command i3blocks
 
-        mode            hide
+        #mode           hide
         colors {
             # bar background color
             background $bg
@@ -225,7 +232,7 @@ bar {
 
 # blue gruvbox
 # class                 border|backgr|text|indicator|child_border
-client.focused          $blue $blue $fg $purple $blue
+client.focused          $aqua $aqua $darkgray $purple $aqua
 client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
 client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
 client.urgent           $red $red $fg $red $red
@@ -235,10 +242,16 @@ client.urgent           $red $red $fg $red $red
 
 #----------------------------------------------------------#
 # Nitrogen
-exec --no-startup-id nitrogen --restore
+#exec --no-startup-id nitrogen --restore
+
+# feh
+exec --no-startup-id feh --bg-fill --randomize ~/Pictures/Wallpapers/1920x1080/*
 
 # Picom
 exec --no-startup-id picom 
+
+# Playerctl
+#exec --no-startup-id playerctld daemon
 
 # i3 gaps
 # for_window [class=".*"] border pixel 8
@@ -246,5 +259,6 @@ exec --no-startup-id picom
 gaps inner 14
 gaps outer 0
 
-bindsym $mod+z exec kitty -e ranger
+# bindsym $mod+z exec kitty -e ranger
+bindsym $mod+z exec thunar
 bindsym $mod+x exec qutebrowser

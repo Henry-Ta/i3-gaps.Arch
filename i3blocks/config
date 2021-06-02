@@ -1,0 +1,204 @@
+# i3blocks configuration file
+#
+# The i3blocks man page describes the usage of the binary,
+# and its website describes the configuration:
+#
+#     https://vivien.github.io/i3blocks
+
+
+# Global properties
+separator=true
+separator_block_width=15
+align=center
+
+#[documentation]
+#full_text=Documentation
+#website=https://vivien.github.io/i3blocks
+#command=xdg-open "$website"
+#color=#f12711
+
+#[greetings]
+#color=#f5af19
+#command=echo "Hello, $USER!"
+#interval=once
+
+
+#command=echo $(playerctl metadata artist) $(playerctl metadata title)
+[playerctl]
+command=~/.config/i3blocks/scripts/playerctl
+label= 
+interval=1
+instance=""
+signal=3
+
+
+
+[memory]
+#command=~/.config/i3blocks/scripts/memory
+#label=MEM 
+#interval=30
+
+interval=1
+command=echo "<span background='#b8bb26'>  </span><span background='#d5c4a1'>" $(~/.config/i3blocks/scripts/memory)  "</span>"
+markup=pango
+color=#1d2021
+
+#[memory]
+#command=$SCRIPT_DIR/memory
+#label=SWAP
+#instance=swap
+#interval=30
+
+
+
+
+[cpu_usage]
+#command=~/.config/i3blocks/scripts/cpu_usage
+#LABEL=CPU 
+command=echo "<span background='#fb4934'>    </span><span background='#d5c4a1'>" $(~/.config/i3blocks/scripts/cpu_usage) "</span>"
+interval=2
+#min_width=CPU: 100.00%
+T_WARN=50
+T_CRIT=80
+#DECIMALS=2
+
+markup=pango
+color=#1d2021
+
+
+
+[temperature]
+#command=~/.config/i3blocks/scripts/temperature
+#label=TEMP 
+command=echo "<span background='#fabd2f'>    </span><span background='#d5c4a1'>" $(~/.config/i3blocks/scripts/temperature) "</span>"
+interval=2
+T_WARN=70
+T_CRIT=90
+#SENSOR_CHIP=""
+
+markup=pango
+color=#1d2021
+
+
+
+[backlight]
+#command=~/.config/i3blocks/scripts/backlight
+#label=☀ 
+command=echo "<span background='#fe8019'>    </span><span background='#d5c4a1'>" $(~/.config/i3blocks/scripts/backlight) "</span>"
+interval=20
+#STEP_SIZE=5
+USE_SUDO=1
+
+markup=pango
+color=#1d2021
+
+
+
+[volume-pulseaudio]
+#command=~/.config/i3blocks/scripts/volume-pulseaudio
+command=echo "<span background='#d5c4a1'>"$(~/.config/i3blocks/scripts/volume-pulseaudio)  "</span>"
+AUDIO_HIGH_SYMBOL=<span background='#83a598'>   </span> 
+AUDIO_MED_SYMBOL=<span background='#83a598'>   </span>
+AUDIO_LOW_SYMBOL=<span background='#83a598'>  </span>
+AUDIO_MUTED_SYMBOL=<span background='#83a598'>  </span>
+
+interval=once
+#interval=persist
+signal=1
+#MIXER=[determined automatically]
+#SCONTROL=[determined automatically]
+##exposed format variables: ${SYMB}, ${VOL}, ${INDEX}, ${NAME}
+#LONG_FORMAT="${SYMB} ${VOL}% [${INDEX}:${NAME}]"
+#SHORT_FORMAT="${SYMB} ${VOL}% [${INDEX}]"
+#AUDIO_HIGH_SYMBOL='  '
+#AUDIO_MED_THRESH=50
+#AUDIO_MED_SYMBOL='  '
+#AUDIO_LOW_THRESH=0
+#AUDIO_LOW_SYMBOL='  '
+#AUDIO_DELTA=5
+#DEFAULT_COLOR="#ffffff"
+#MUTED_COLOR="#a0a0a0"
+#USE_ALSA_NAME=0
+#USE_DESCRIPTION=0
+## SUBSCRIBE=1 requires interval=persist and always uses LONG_FORMAT
+SUBSCRIBE=0
+
+markup=pango
+color=#1d2021
+
+
+
+[rofi-calendar]
+#command=~/.config/i3blocks/scripts/rofi-calendar
+command=echo "<span background='#d3869b'>    </span><span background='#d5c4a1'>" $(~/.config/i3blocks/scripts/rofi-calendar)  "</span>"
+interval=3600
+FONT=Fira Code 16
+#BAR_POSITION=bottom
+#WEEK_START=monday
+#DATEFTM=+%a %d %b %Y
+#SHORTFMT=+%d/%m/%Y
+#DATEFTM=+%a %d %b %Y
+#SHORTFMT=+%d/%m/%Y
+#LABEL= 
+#LEFTCLICK_PREV_MONTH=false
+#PREV_MONTH_TEXT=« previous month «
+#NEXT_MONTH_TEXT=» next month »
+#ROFI_CONFIG_FILE=/dev/null
+ROFI_CONFIG_FILE=~/.config/rofi/gruvbox-dark.rasi
+
+markup=pango
+color=#1d2021
+
+
+[time]
+#label=TIME
+#command=date '+%H:%M:%S'
+interval=1
+
+command=echo "<span background='#8ec07c'>    </span><span background='#d5c4a1'> `date '+%H:%M:%S'` </span>"
+markup=pango
+color=#1d2021PT=i3lock --color=${BG_COLOR#"#"}
+
+
+[batterybar]
+command=~/.config/i3blocks/scripts/batterybar
+interval=5
+label=<span background='#a89984' foreground='#1d2021'>  </span> 
+markup=pango
+min_width=■■■■■
+# Discharging colors low to high
+C1=#cc241d
+C2=#fb4934
+C3=#d79921
+C4=#fabd2f
+C5=#98971a
+C6=#b8bb26
+C7=#689d6a
+C8=#8ec07c
+CHARGING_COLOR=#458588
+FULL_COLOR=#83a598
+AC_COLOR=#b16286
+
+
+
+[shutdown_menu]
+full_text=  
+# If you are using FontAwesome, we recommend the power-off icon:
+# http://fontawesome.io/icon/power-off/
+command=~/.config/i3blocks/scripts/shutdown_menu
+#FG_COLOR=#bbbbbb
+#BG_COLOR=#111111
+#HLFG_COLOR=#111111
+#HLBG_COLOR=#bbbbbb
+#BORDER_COLOR=#222222
+ROFI_TEXT=  Quit
+ROFI_OPTIONS=-width 11 -location 0 -hide-scrollbar -bw 2
+#ZENITY_TITLE=Menu
+#ZENITY_TEXT=Action:
+#ZENITY_OPTIONS=--column= --hide-header
+#ENABLE_CONFIRMATIONS=true (must be true or false)
+#LAUNCHER=rofi (must be rofi or zenity)
+#LOCKSC
+
+markup=pango
+color=#cc241d
