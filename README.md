@@ -309,6 +309,9 @@ alias gitadd='git add .'
 alias gitcommit='git commit'
 alias gitlog='git log --graph --all'
 alias gitstatus='git status'
+alias gitpush='git push'
+alias gitpull='git pull'
+alias gitclone='git clone'
 
 
 ZLE_RPROMPT_INDENT=0
