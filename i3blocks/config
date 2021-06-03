@@ -26,7 +26,7 @@ align=center
 #command=echo $(playerctl metadata artist) $(playerctl metadata title)
 [playerctl]
 command=~/.config/i3blocks/scripts/playerctl
-label= 
+label=  
 interval=1
 instance=""
 signal=3

@@ -223,16 +223,14 @@ bar {
 
 #start of window title bars & borders section
 
-# green gruvbox
-# class                 border|backgr|text|indicator|child_border
-#client.focused          $green $green $darkgray $purple $darkgray
-#client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
-#client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
-#client.urgent           $red $red $white $red $red
 
-# blue gruvbox
+# gruvbox
 # class                 border|backgr|text|indicator|child_border
-client.focused          $aqua $aqua $darkgray $purple $aqua
+#client.focused          $green $green $darkgray $purple $green             #green
+#client.focused          $aqua $aqua $darkgray $purple $aqua                #aqua
+client.focused          $blue $blue $fg $purple $blue                       #blue
+#client.focused          $yellow $yellow $darkgray $purple $yellow          #yellow
+
 client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
 client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
 client.urgent           $red $red $fg $red $red

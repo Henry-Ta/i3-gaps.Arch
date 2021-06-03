@@ -10,15 +10,13 @@ $ sudo pacman -Syy
 ## Install packages
 
 ```
-$ sudo pacman -S (xf86-video-intel/xf86-video-amdgpu) (nvidia-lts/nvidia nvidia-utils nvidia-settings) xorg-server xfce4 xfce4-goodies
-( $ sudo pacman -S i3-gaps i3blocks rofi feh lxappearance ranger )
+$ sudo pacman -S xorg-server i3-gaps i3blocks rofi feh lxappearance ranger nvidia-lts/nvidia nvidia-utils nvidia-settings
 
-$ sudo pacman -S kitty qutebrowser firefox chromium vlc gimp file-roller pavucontrol lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings evince galculator neofetch gufw clamtk libreoffice-fresh exa tmux bpytop bleachbit
-
+$ sudo pacman -S kitty qutebrowser firefox vlc gimp file-roller pavucontrol lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings evince galculator neofetch gufw clamtk libreoffice-fresh exa tmux bpytop bleachbit
 
 i3blocks -> (sysstat acpi acpilight)
 
-(pcmanfm nnn picom geany geany-plugins nitrogen gpicview)
+(xfce4 xfce4-goodies xf86-video-intel/xf86-video-amdgpu pcmanfm nnn picom geany geany-plugins nitrogen gpicview chromium)
 ```
 
 ## Prepare for start up
@@ -78,27 +76,6 @@ $ sudo make install
 ```
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-```
-
-#### Install Yay
-
-```
-$ cd /opt
-$ sudo git clone https://aur.archlinux.org/yay.git
-$ sudo chown -R henry:users ./yay
-$ cd yay
-$ makepkg -si
-```
-
-#### Install AUR packages
-
-```
-$ yay -S zoom visual-studio-code-bin ttf-iosevka ttf-icomoon-feather ttf-font-icons gruvbox-material-gtk-theme-git gruvbox-material-icon-theme-git optimus-manager optimus-manager-qt picom-ibhagwan-git imagewriter
-
-( $ yay -S heroku-cli polybar gotop pamac-aur)
-
-( $ sudo systemctl enable optimus-manager )
-( $ sudo systemctl start optimus-manager )
 ```
 
 #### Install Python packages
@@ -272,8 +249,8 @@ alias sysremove='sudo pacman -Rns'
 alias yayupdate='yay -Syyu'
 alias yayinstall='yay -S'
 alias yayremove='yay -Rns'
-alias checkorphans='sudo pacman -Qtdq'
-alias removeorphans='sudo pacman -Rns $(pacman -Qtdq)'
+alias syscheckorphans='sudo pacman -Qtdq'
+alias sysremoveorphans='sudo pacman -Rns $(pacman -Qtdq)'
 alias yayremoveorphans='yay -Yc'
 alias paccachecheck='paccache -d'
 alias paccacheremove='paccache -r'
@@ -286,12 +263,15 @@ alias archreadme='nvim ~/Linux/Arch/README.md'
 alias archdir='cd ~/Linux/Arch'
 alias i3config='nvim ~/.config/i3/config'
 alias i3dir='cd ~/.config/i3'
-alias i3blocksconf='nvim ~/.config/i3blocks/config'
+alias i3blocksconfig='nvim ~/.config/i3blocks/config'
 alias i3blocksdir='cd ~/.config/i3blocks'
 alias tmuxconfig='sudo nvim ~/.tmux.conf'
 alias xinitrc='nvim ~/.xinitrc'
 alias bashrc='nvim ~/.bashrc'
 alias zshrc='nvim ~/.zshrc'
+alias kittyconfig='nvim ~/.config/kitty/kitty.conf'
+alias fontsdir='ranger ~/.local/share/fonts/'
+alias vlcmusic='vlc -I ncurses --no-video'
 
 alias nv='nvim'
 alias nvconfig='nvim ~/.config/nvim/init.vim'
@@ -305,13 +285,13 @@ alias ra='ranger'
 alias ex='exit'
 alias cl='clear'
 
-alias gitadd='git add .'
-alias gitcommit='git commit'
-alias gitlog='git log --graph --all'
-alias gitstatus='git status'
-alias gitpush='git push'
-alias gitpull='git pull'
-alias gitclone='git clone'
+alias gadd='git add .'
+alias gcommit='git commit'
+alias glog='git log --graph --all'
+alias gstatus='git status'
+alias gpush='git push'
+alias gpull='git pull'
+alias gclone='git clone'
 
 
 ZLE_RPROMPT_INDENT=0
@@ -325,6 +305,64 @@ $ su
 $ nvim /etc/sudoers
 
 %wheel ALL=(ALL) NOPASSWD: /usr/bin/xbacklight
+```
+
+#### Lightdm settings
+
+```
+Note: Put PNG or JPG images in /usr/share/pixmaps
+
+$ sudo cp ~/Pictures/Wallpapers/1920x1080/lockscreen1.png /usr/share/pixmaps/
+
+
+$ sudo nvim /etc/lightdm/lightdm-gtk-greeter.conf
+
+[greeter]
+theme-name = Gruvbox-Material-Dark
+icon-theme-name = Gruvbox-Material-Dark
+font-name = Sans 16
+background = /usr/share/pixmaps/lockscreen1.png
+default-user-image = /usr/share/pixmaps/archlinux-logo.png
+clock-format = %A,%h-%d-%Y (%H:%M:%S)
+indicators = ~host;~spacer;~clock;~spacer;~session;~layout;~a11y;~power
+
+```
+
+#### bpytop gruvbox theme
+
+```
+$ nvim ~/.config/bpytop/bpytop.conf
+color_theme="gruvbox_dark"
+```
+
+
+#### Neofetch (Default config)
+```
+$ sudo nvim $(which neofetch)
+
+arch_old (+3 space)
+```
+
+
+#### Install Yay
+
+```
+$ cd /opt
+$ sudo git clone https://aur.archlinux.org/yay.git
+$ sudo chown -R henry:users ./yay
+$ cd yay
+$ makepkg -si
+```
+
+#### Install AUR packages
+
+```
+$ yay -S zoom visual-studio-code-bin ttf-iosevka ttf-icomoon-feather ttf-font-icons gruvbox-material-gtk-theme-git gruvbox-material-icon-theme-git optimus-manager optimus-manager-qt picom-ibhagwan-git imagewriter
+
+( $ yay -S heroku-cli polybar gotop pamac-aur)
+
+( $ sudo systemctl enable optimus-manager )
+( $ sudo systemctl start optimus-manager )
 ```
 
 
@@ -355,14 +393,6 @@ $ sudo pacman -S xorg-xdpyinfo xorg-xrandr bc feh
 $ betterlockscreen -u Pictures/arch.png -b 1.0
 ```
 
-#### Lightdm settings
-
-```
-Note: Put PNG or JPG images in /usr/share/pixmaps
-
-$ sudo cp ~/Pictures/Wallpapers/1920x1080/lockscreen1.png /usr/share/pixmaps/
-
-```
 
 #### Powerline Terminal
 
@@ -388,26 +418,16 @@ $ mkdir -p ~/.config/QtProject/qtcreator/styles
 $ nvim ~/.config/QtProject/qtcreator/styles/gruvbox-dark.xml
 ```
 
-#### Tmux Gruvbox
-
-```
-$sudo nvim ~/.tmux.conf
-(https://github.com/egel/tmux-gruvbox)
-
-
-```
-
-#### bpytop gruvbox theme
-
-```
-$ nvim ~/.config/bpytop/bpytop.conf
-color_theme="gruvbox_dark"
-```
-
 #### Oh-my-bash
 
 ```
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
 ```
 
+#### Install fonts manually
+```
+mkdir -p /usr/local/share/fonts
 
+sudo chmod 555 ~/.local/share/fonts/
+sudo chmod 444 ~/.local/share/fonts/*
+```
