@@ -30,6 +30,36 @@ label=
 interval=1
 instance=""
 signal=3
+color=#928374
+
+
+
+[usb]
+command=~/.config/i3blocks/scripts/usb
+markup=pango
+signal=1
+interval=10
+IGNORE_LIST=["sda1","sda2","sda3","sda4","sda5","sda6"]
+INFO_TEXT_COLOR=#d5c4a1
+MOUNTED_COLOR=#98971a
+PLUGGED_COLOR=#928374
+LOCKED_COLOR=#928374
+UNLOCKED_NOT_MOUNTED_COLOR=#d79921
+PARTITIONLESS_COLOR=#cc241d
+SEPARATOR=<span color='#928374'> | </span>
+#IGNORE_LIST=["sdd1", "mapper/sda1_crypt"]
+#INFO_TEXT_COLOR=white
+#MOUNTED_COLOR=green
+#PLUGGED_COLOR=gray
+#LOCKED_COLOR=gray
+#UNLOCKED_NOT_MOUNTED_COLOR=yellow
+#PARTITIONLESS_COLOR=red
+#SEPARATOR=<span color='gray'> | </span>
+#PARTITIONLESS_TEXT=no partitions
+#LOCKED_INDICATOR= 
+#UNLOCKED_INDICATOR= 
+#READONLY_INDICATOR=ro
+#TRUNCATE_FS_LABELS=[not set by default, accepts +/- integers]
 
 
 

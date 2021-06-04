@@ -10,7 +10,7 @@ $ sudo pacman -Syy
 ## Install packages
 
 ```
-$ sudo pacman -S xorg-server i3-gaps i3blocks rofi feh lxappearance ranger nvidia-lts/nvidia nvidia-utils nvidia-settings
+$ sudo pacman -S xorg-server xorg-xinitrc i3-gaps i3blocks rofi feh lxappearance ranger nvidia-lts/nvidia nvidia-utils nvidia-settings
 
 $ sudo pacman -S kitty qutebrowser firefox vlc gimp file-roller pavucontrol lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings evince galculator neofetch gufw clamtk libreoffice-fresh exa tmux bpytop bleachbit
 
@@ -100,7 +100,7 @@ Choose Nvidia vulcan (2)
 #### Install zsh
 
 ```
-$ sudo pacman -S zsh 
+$ sudo pacman -S zsh
 
 (Set zsh default shell)
 $ chsh -s $(which zsh)
@@ -237,9 +237,6 @@ class compress(Command):
 ```
 $ nvim .bashrc   /   nvim .zshrc
 
-force_color_prompt=yes
-
-export VISUAL=nvim
 export EDITOR=nvim
 export BAT_THEME=gruvbox-dark
 
@@ -297,7 +294,6 @@ alias gclone='git clone'
 ZLE_RPROMPT_INDENT=0
 ```
 
-
 #### xbacklight scrolling
 
 ```
@@ -335,14 +331,13 @@ $ nvim ~/.config/bpytop/bpytop.conf
 color_theme="gruvbox_dark"
 ```
 
-
 #### Neofetch (Default config)
+
 ```
 $ sudo nvim $(which neofetch)
 
 arch_old (+3 space)
 ```
-
 
 #### Install Yay
 
@@ -364,7 +359,6 @@ $ yay -S zoom visual-studio-code-bin ttf-iosevka ttf-icomoon-feather ttf-font-ic
 ( $ sudo systemctl enable optimus-manager )
 ( $ sudo systemctl start optimus-manager )
 ```
-
 
 #### No pass for Pamac Manager
 
@@ -392,7 +386,6 @@ $ git config --global core.editor 'nvim'
 $ sudo pacman -S xorg-xdpyinfo xorg-xrandr bc feh
 $ betterlockscreen -u Pictures/arch.png -b 1.0
 ```
-
 
 #### Powerline Terminal
 
@@ -425,6 +418,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/mast
 ```
 
 #### Install fonts manually
+
 ```
 mkdir -p /usr/local/share/fonts
 

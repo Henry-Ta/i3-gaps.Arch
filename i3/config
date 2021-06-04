@@ -243,7 +243,7 @@ client.urgent           $red $red $fg $red $red
 #exec --no-startup-id nitrogen --restore
 
 # feh
-exec --no-startup-id feh --bg-fill --randomize ~/Pictures/Wallpapers/1920x1080/*
+exec --no-startup-id feh --randomize --bg-fill ~/Pictures/Wallpapers/1920x1080/*
 
 # Picom
 exec --no-startup-id picom 
@@ -258,5 +258,6 @@ gaps inner 14
 gaps outer 0
 
 # bindsym $mod+z exec kitty -e ranger
-bindsym $mod+z exec thunar
+#bindsym $mod+z exec thunar
+bindsym $mod+z exec pcmanfm
 bindsym $mod+x exec qutebrowser
