@@ -111,6 +111,39 @@ color=#1d2021
 
 
 
+[rofi-calendar]
+#command=~/.config/i3blocks/scripts/rofi-calendar
+command=echo "<span background='#d3869b'>    </span><span background='#d5c4a1'>" $(~/.config/i3blocks/scripts/rofi-calendar)  "</span>"
+interval=3600
+FONT=Fira Code 16
+#BAR_POSITION=bottom
+#WEEK_START=monday
+#DATEFTM=+%a %d %b %Y
+#SHORTFMT=+%d/%m/%Y
+#DATEFTM=+%a %d %b %Y
+#SHORTFMT=+%d/%m/%Y
+#LABEL= 
+#LEFTCLICK_PREV_MONTH=false
+#PREV_MONTH_TEXT=« previous month «
+#NEXT_MONTH_TEXT=» next month »
+#ROFI_CONFIG_FILE=/dev/null
+ROFI_CONFIG_FILE=~/.config/rofi/gruvbox-dark.rasi
+
+markup=pango
+color=#1d2021
+
+
+[time]
+#label=TIME
+#command=date '+%H:%M:%S'
+interval=1
+
+command=echo "<span background='#8ec07c'>    </span><span background='#d5c4a1'> `date '+%H:%M:%S'` </span>"
+markup=pango
+color=#1d2021PT=i3lock --color=${BG_COLOR#"#"}
+
+
+
 [backlight]
 #command=~/.config/i3blocks/scripts/backlight
 #label=☀ 
@@ -156,38 +189,6 @@ SUBSCRIBE=0
 markup=pango
 color=#1d2021
 
-
-
-[rofi-calendar]
-#command=~/.config/i3blocks/scripts/rofi-calendar
-command=echo "<span background='#d3869b'>    </span><span background='#d5c4a1'>" $(~/.config/i3blocks/scripts/rofi-calendar)  "</span>"
-interval=3600
-FONT=Fira Code 16
-#BAR_POSITION=bottom
-#WEEK_START=monday
-#DATEFTM=+%a %d %b %Y
-#SHORTFMT=+%d/%m/%Y
-#DATEFTM=+%a %d %b %Y
-#SHORTFMT=+%d/%m/%Y
-#LABEL= 
-#LEFTCLICK_PREV_MONTH=false
-#PREV_MONTH_TEXT=« previous month «
-#NEXT_MONTH_TEXT=» next month »
-#ROFI_CONFIG_FILE=/dev/null
-ROFI_CONFIG_FILE=~/.config/rofi/gruvbox-dark.rasi
-
-markup=pango
-color=#1d2021
-
-
-[time]
-#label=TIME
-#command=date '+%H:%M:%S'
-interval=1
-
-command=echo "<span background='#8ec07c'>    </span><span background='#d5c4a1'> `date '+%H:%M:%S'` </span>"
-markup=pango
-color=#1d2021PT=i3lock --color=${BG_COLOR#"#"}
 
 
 [batterybar]

@@ -164,6 +164,12 @@ echo "default_linemode devicons" >> ~/.config/ranger/rc.conf
 nvim ~/.config/ranger/plugins/ranger_devicons/__init__.py
 
 
+( Delete to trash - use DD )
+$ nvim ~/.config/ranger/rc.conf
+
+map DD shell mv %s /home/${USER}/.local/share/Trash/files/
+
+
 (Archive / Extract)
 
 from ranger.core.loader import CommandLoader
@@ -237,6 +243,9 @@ class compress(Command):
 ```
 $ nvim .bashrc   /   nvim .zshrc
 
+force_color_prompt=yes
+
+export VISUAL=nvim
 export EDITOR=nvim
 export BAT_THEME=gruvbox-dark
 
@@ -281,6 +290,8 @@ alias lt='env EXA_ICON_SPACING=2 exa -TlUS --octal-permissions --git --icons --t
 alias ra='ranger'
 alias ex='exit'
 alias cl='clear'
+alias mk='make'
+alias mkcl='make clean'
 
 alias gadd='git add .'
 alias gcommit='git commit'
@@ -289,6 +300,7 @@ alias gstatus='git status'
 alias gpush='git push'
 alias gpull='git pull'
 alias gclone='git clone'
+alias gconfig='git config'
 
 
 ZLE_RPROMPT_INDENT=0
@@ -319,7 +331,7 @@ icon-theme-name = Gruvbox-Material-Dark
 font-name = Sans 16
 background = /usr/share/pixmaps/lockscreen1.png
 default-user-image = /usr/share/pixmaps/archlinux-logo.png
-clock-format = %A,%h-%d-%Y (%H:%M:%S)
+clock-format = %A, %h-%d-%Y (%H:%M:%S)
 indicators = ~host;~spacer;~clock;~spacer;~session;~layout;~a11y;~power
 
 ```
