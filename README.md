@@ -10,13 +10,14 @@ $ sudo pacman -Syy
 ## Install packages
 
 ```
-$ sudo pacman -S xorg-server xorg-xinitrc i3-gaps i3blocks rofi feh lxappearance ranger nvidia-lts/nvidia nvidia-utils nvidia-settings
+$ sudo pacman -S xorg-server xfce4 xfce4-goodies (^6 ^11 | ^1 ^12 ^14 ^19 ^36)
+$ xorg-xinitrc i3-gaps i3blocks rofi feh lxappearance ranger nvidia-lts/nvidia nvidia-utils nvidia-settings
 
-$ sudo pacman -S kitty qutebrowser firefox vlc gimp file-roller pavucontrol lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings evince galculator neofetch gufw clamtk libreoffice-fresh exa tmux bpytop bleachbit
+$ sudo pacman -S kitty qutebrowser firefox vlc gimp file-roller pavucontrol lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings evince galculator neofetch gufw clamtk libreoffice-fresh exa tmux bpytop bleachbit gpick
 
 i3blocks -> (sysstat acpi acpilight)
 
-(xfce4 xfce4-goodies xf86-video-intel/xf86-video-amdgpu pcmanfm nnn picom geany geany-plugins nitrogen gpicview chromium)
+( xf86-video-intel/xf86-video-amdgpu pcmanfm nnn picom geany geany-plugins nitrogen gpicview chromium)
 ```
 
 ## Prepare for start up
@@ -45,7 +46,7 @@ $ nvim ~/.config/i3/config
 #### Fonts
 
 ```
-$ sudo pacman -S otf-font-awesome otf-cascadia-code ttf-fira-code ttf-droid ttf-joypixels ttf-nerd-fonts-symbols ttf-ionicons
+$ sudo pacman -S otf-font-awesome otf-cascadia-code ttf-fira-code ttf-droid ttf-joypixels ttf-nerd-fonts-symbols
 ```
 
 #### Install wifi for Kernel module
@@ -262,6 +263,7 @@ alias paccachecheck='paccache -d'
 alias paccacheremove='paccache -r'
 alias cachecheck='sudo du -sh ~/.cache/'
 alias cacheremove='rm -rf ~/.cache/*'
+alias chmodx='sudo chmod +x'
 
 alias i3archreadme='nvim ~/Linux/i3-gaps.Arch/README.md'
 alias i3archdir='cd ~/Linux/i3-gaps.Arch'
@@ -364,9 +366,9 @@ $ makepkg -si
 #### Install AUR packages
 
 ```
-$ yay -S zoom visual-studio-code-bin ttf-iosevka ttf-icomoon-feather ttf-font-icons gruvbox-material-gtk-theme-git gruvbox-material-icon-theme-git optimus-manager optimus-manager-qt picom-ibhagwan-git imagewriter
+$ yay -S zoom visual-studio-code-bin  gruvbox-material-gtk-theme-git gruvbox-material-icon-theme-git optimus-manager optimus-manager-qt picom-ibhagwan-git imagewriter
 
-( $ yay -S heroku-cli polybar gotop pamac-aur)
+( $ yay -S heroku-cli polybar gotop pamac-aur ttf-iosevka ttf-icomoon-feather ttf-font-icons)
 
 ( $ sudo systemctl enable optimus-manager )
 ( $ sudo systemctl start optimus-manager )

@@ -27,6 +27,7 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+
     " For C/C++
     Plug 'jackguo380/vim-lsp-cxx-highlight'
 
@@ -143,8 +144,41 @@ let g:NERDTreeWinPos = 'right'
 "let g:NERDTreeGitStatusUseNerdFonts = 1
 
 "------------------------------------- Devicons
-set guifont=DroidSansMono\ Nerd\ Font\ 11
+set guifont=DroidSansMono\ Nerd\ Font\ 12
 let g:airline_powerline_fonts = 1
+
+"" rounded separators (extra-powerline-symbols):
+"let g:airline_left_sep = "\uE0B4"
+"let g:airline_right_sep = "\uE0B6"
+
+"" rounded separators (no-extra-powerline-symbols):
+"let g:airline_left_sep = "\uE0B5"
+"let g:airline_right_sep = "\uE0B7"
+
+"" angle down separators (extra-powerline-symbols):
+"let g:airline_left_sep = "\uE0B8"
+"let g:airline_right_sep = "\uE0BA"
+
+"" angle up separators (extra-powerline-symbols):
+"let g:airline_left_sep = "\uE0BC"
+"let g:airline_right_sep = "\uE0BE"
+
+"" flame separators (extra-powerline-symbols):
+"let g:airline_left_sep = "\uE0C0"
+"let g:airline_right_sep = "\uE0C2"
+
+"" block1 separators (extra-powerline-symbols):
+"let g:airline_left_sep = "\uE0C6"
+"let g:airline_right_sep = "\uE0C7"
+
+"" block2 separators (extra-powerline-symbols):
+"let g:airline_left_sep = "\uE0C8"
+"let g:airline_right_sep = "\uE0CA"
+
+
+"" set the CN (column number) symbol:
+"let g:airline_section_z = airline#section#create(["\uE0A1" . '%{line(".")}' . "\uE0A3" . '%{col(".")}'])
+
 
 
 "------------------------------------- Syntax Highlight
@@ -246,3 +280,4 @@ set expandtab       " Expand TABs to spaces
 "nnoremap <A-l> <C-w>l
 "nnoremap <A-q> <C-w>q
 "nnoremap <A-=> <C-w>=
+

@@ -1,7 +1,10 @@
 #! /usr/bin/env bash
 
 ###### Variables ######
-DATEFTM="${DATEFTM:-+%a %d %b %Y}"
+#DATEFTM="${DATEFTM:-+%A, %B-%d-%Y}"
+DATEFTM="${DATEFTM:-+%a, %b-%d-%Y}"
+#DATEFTM="${DATEFTM:-+%a %d %b %Y}"
+
 SHORTFMT="${SHORTFMT:-+%d/%m/%Y}"
 LABEL="${LABEL:- }"
 FONT="${FONT:-Monospace 10}"

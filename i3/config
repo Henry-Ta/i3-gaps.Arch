@@ -205,8 +205,13 @@ set $fg #fbf1c7
 # finds out, if available)
 bar {
         status_command i3blocks
-
+    
+        font pango:Droid Sans 13 
+        #font pango:Droid Serif 13 
+        #font pango:FreeSerif 13 
+        
         #mode           hide
+
         colors {
             # bar background color
             background $bg
