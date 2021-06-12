@@ -1,0 +1,147 @@
+/*--------------------------------numbered_tabs.css------------------*/
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/numbered_tabs.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* Show a number before tab text*/
+
+.tabbrowser-tab:first-child{ counter-reset: nth-tab 0 } /* Change to -1 for 0-indexing */
+.tab-text::before{ content: ""counter(nth-tab) ". "; counter-increment: nth-tab }
+
+
+/*-----------------------iconized_main_menu.css---------------------------------*/
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/iconized_main_menu.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* Adds icons to main menu items which were removed in Proton */
+#appMenu-fxa-status2[fxastatus] > toolbarbutton::before,
+#appMenu-protonMainView > .panel-subview-body > toolbarbutton > image{
+  fill: currentColor;
+  -moz-context-properties: fill;
+  margin-inline: 0 8px !important;
+}
+#appMenu-new-tab-button2{ list-style-image: url("chrome://browser/skin/new-tab.svg") }
+#appMenu-new-window-button2{ list-style-image: url("chrome://browser/skin/window.svg") }
+#appMenu-new-private-window-button2{ list-style-image: url("chrome://browser/skin/privateBrowsing.svg") }
+#appMenu-bookmarks-button{ list-style-image: url("chrome://browser/skin/bookmark-star-on-tray.svg") }
+#appMenu-history-button{ list-style-image: url("chrome://browser/skin/history.svg") }
+#appMenu-downloads-button{ list-style-image: url("chrome://browser/skin/downloads/downloads.svg") }
+#appMenu-passwords-button{ list-style-image: url("chrome://browser/skin/login.svg") }
+#appMenu-extensions-themes-button{ list-style-image: url("chrome://mozapps/skin/extensions/extension.svg") }
+#appMenu-print-button2{ list-style-image: url("chrome://global/skin/icons/print.svg") }
+#appMenu-save-file-button2{ list-style-image: url("chrome://browser/skin/save.svg") }
+#appMenu-find-button2{ list-style-image: url("chrome://global/skin/icons/search-glass.svg") }
+#appMenu-settings-button{ list-style-image: url("chrome://global/skin/icons/settings.svg") }
+#appMenu-more-button2{ list-style-image: url("chrome://browser/skin/developer.svg") }
+#appMenu-help-button2{ list-style-image: url(chrome://global/skin/icons/info.svg) }
+#appMenu-quit-button2{ list-style-image: url(chrome://browser/skin/quit.svg) }
+
+/* Use account-button icon for signed in sync item */
+#appMenu-fxa-status2[fxastatus] > toolbarbutton::before{
+  display: -moz-box;
+  content: "";
+  width: 16px;
+  height: 16px;
+  background-image: var(--avatar-image-url)
+}
+/* Add somewhat hacky separator to zoom controls so it looks consistent */
+#appMenu-protonMainView > .panel-subview-body::after{
+  content: "";
+  display: -moz-box;
+  border-bottom: 1px solid var(--panel-separator-color);
+  margin: var(--panel-separator-margin);
+}
+
+#appMenu-find-button2 ~ *{
+  -moz-box-ordinal-group: 2;
+}
+
+
+/*[>----------------combined_tabs_and_main_toolbars.css-------------------------------<]*/
+/*/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/combined_tabs_and_main_toolbars.css made available under Mozilla Public License v. 2.0*/
+/*See the above repository for updates as well as full license text. */*/
+
+/*/* Combines tabs toolbar and nav-bar in such a way that opening new tabs will reserve*/
+   /*space from nav-bar. Only pinned tabs and the selected tab will be visible, all other tabs need to be accessed via alltabs-button or shortcut keys */*/
+
+/*[> You WILL NEED either autohide_menubar.css or overlay_menubar.css with this or use custom css that does something similar <]  */
+
+/*#toolbar-menubar[autohide="true"] > .titlebar-buttonbox-container{ display: none !important; }*/
+/*#toolbar-menubar{ left:0 }*/
+
+/*@supports -moz-bool-pref("layout.css.osx-font-smoothing.enabled"){*/
+  /*#TabsToolbar > .titlebar-buttonbox-container{*/
+    /*position: fixed;*/
+    /*display: block;*/
+    /*left: 0px;*/
+    /*z-index: 1;*/
+  /*}*/
+  /*:root[tabsintitlebar="true"] #nav-bar{ padding-inline: calc(var(--uc-hide-window-control-space,1) * 96px + 20px) 0px !important; }*/
+  
+  /*@media (-moz-os-version: windows-win10){*/
+    /*:root[tabsintitlebar="true"] #nav-bar{ padding-left: calc(var(--uc-hide-window-control-space,1) * 134px + 20px) !important; }*/
+  /*}*/
+  /*#toolbar-menubar[autohide="true"] + #TabsToolbar .titlebar-buttonbox{ -moz-box-direction: reverse }*/
+/*}*/
+
+/*#navigator-toolbox{ --tab-min-height: 40px }*/
+/*:root[uidensity="compact"] #navigator-toolbox{ --tab-min-height: 32px }*/
+
+/*@media (-moz-os-version: windows-win7),(-moz-os-version: windows-win10){*/
+  /*:root[sizemode="maximized"] > body > box{ margin-top: 8px }*/
+/*}*/
+
+/*#navigator-toolbox{*/
+  /*display: flex;*/
+  /*flex-direction: row-reverse;*/
+  /*flex-wrap: wrap;*/
+/*}*/
+
+/*#titlebar{ -moz-appearance: none !important; }*/
+/*:root[tabsintitlebar="true"] #nav-bar{ padding-left: 20px }*/
+
+/*#nav-bar,#PersonalToolbar{ flex-grow: 1; }*/
+
+/*[> This margin on bookmarks toolbar makes absolutely no sense, but it won't work properly without it <]*/
+/*.browser-toolbar.chromeclass-directories:not([collapsed="true"]){*/
+  /*min-width: 100vw !important;*/
+  /*margin-bottom: var(--tab-min-height);*/
+/*}*/
+/*[> reduce urlbar minimum width before things start to go to overflow menu <]*/
+/*#urlbar-container{ min-width: 300px !important; }*/
+
+/*#TabsToolbar > .titlebar-spacer[type="pre-tabs"]{ display: none !important; }*/
+/*#alltabs-button{ display: -moz-box !important }*/
+/*.tabbrowser-tab{ margin-inline-start: 0 !important }*/
+/*[> If you are only working with just a few tabs then you may safely delete the following to allow non-pinned tabs to be shown <]*/
+/*.tabbrowser-tab:not([pinned]):not([selected]){ visibility: collapse }*/
+
+
+/*[>-------------tabs_fill_available_width.css-------------------------------------------------------<]*/
+
+/*/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/tabs_fill_available_width.css made available under Mozilla Public License v. 2.0*/
+/*See the above repository for updates as well as full license text. */*/
+
+/*[> Why 100vw? Tab closing requires width animation to end and "none" can't be animated <]*/
+/*.tabbrowser-tab[fadein]{ max-width: 100vw !important }*/
+
+
+
+
+/*---------------autohide_tabstoolbar.css------------------------*/
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/autohide_tabstoolbar.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* Hide tabs unless cursor is on top of toolbar */
+
+@keyframes slidein{
+  from{ margin-top: calc(0px - var(--tab-min-height)) }
+  to{ margin-top: 0 }
+}
+@keyframes slideout{
+  from{ margin-top: var(--tab-min-height) }
+  to{ margin-top: 0 }
+}
+#navigator-toolbox:not(:hover) > #titlebar{ -moz-appearance: none !important }
+#navigator-toolbox:not(:hover)  #TabsToolbar:not([customizing]) { visibility: collapse }
+#navigator-toolbox:hover > #nav-bar:not([customizing]){ animation: slidein ease-out 48ms 1 }
+#navigator-toolbox:not(:hover) > #nav-bar:not([customizing]){ animation: slideout ease-out 48ms 1 }

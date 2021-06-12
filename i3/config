@@ -191,15 +191,17 @@ bindsym $mod+r mode "resize"
 
 # set primary gruvbox colorscheme colors
 set $bg #282828
+set $darkgray #1d2021
+set $fg #fbf1c7
+
 set $red #cc241d
 set $green #98971a
 set $yellow #d79921
 set $blue #458588
 set $purple #b16286
 set $aqua #689d68
-set $gray #a89984
-set $darkgray #1d2021
-set $fg #fbf1c7
+set $orange #d65d0e
+set $gray #928374
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -222,7 +224,7 @@ bar {
             focused_workspace    $aqua $aqua $darkgray
             inactive_workspace   $darkgray $darkgray $yellow
             active_workspace     $darkgray $darkgray $yellow
-            urgent_workspace     $red $red $bg
+            urgent_workspace     $red $red $fg
         }
 }
 
@@ -231,10 +233,13 @@ bar {
 
 # gruvbox
 # class                 border|backgr|text|indicator|child_border
-#client.focused          $green $green $darkgray $purple $green             #green
-#client.focused          $aqua $aqua $darkgray $purple $aqua                #aqua
-client.focused          $blue $blue $fg $purple $blue                       #blue
-#client.focused          $yellow $yellow $darkgray $purple $yellow          #yellow
+#client.focused          $green $green $fg $purple $green               #green
+#client.focused          $aqua $aqua $darkgray $purple $aqua            #aqua
+#client.focused          $blue $blue $fg $purple $blue                  #blue
+#client.focused          $yellow $yellow $darkgray $purple $yellow      #yellow
+#client.focused          $gray $gray $darkgray $purple $gray            #gray
+#client.focused          $orange $orange $darkgray $purple $orange       #orange
+client.focused          $purple $purple $fg $blue $purple               #purple
 
 client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
 client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
@@ -262,7 +267,7 @@ exec --no-startup-id picom
 gaps inner 14
 gaps outer 0
 
-# bindsym $mod+z exec kitty -e ranger
+bindsym $mod+z exec kitty -e ranger
 #bindsym $mod+z exec thunar
-bindsym $mod+z exec pcmanfm
+#bindsym $mod+z exec pcmanfm
 bindsym $mod+x exec qutebrowser

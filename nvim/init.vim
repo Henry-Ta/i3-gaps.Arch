@@ -4,8 +4,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 
-    Plug 'tpope/vim-surround'
-
     Plug 'tpope/vim-fugitive'
 	Plug 'airblade/vim-gitgutter'
 
@@ -26,7 +24,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'machakann/vim-sandwich'
 
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 
     " For C/C++
     Plug 'jackguo380/vim-lsp-cxx-highlight'
@@ -252,6 +249,15 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 
+"-------------------------------------------------------------------Auto Pairs
+"<CR>  : Insert new indented line after return if cursor in blank brackets or quotes.
+"<BS>  : Delete brackets in pair
+"<M-p> : Toggle Autopairs (g:AutoPairsShortcutToggle)
+"<M-e> : Fast Wrap (g:AutoPairsShortcutFastWrap)
+"<M-n> : Jump to next closed pair (g:AutoPairsShortcutJump)
+"<M-b> : BackInsert (g:AutoPairsShortcutBackInsert)
+
+
 "-------------------------------------------------------------------Sandwich
 "Add: saiw ()
 "Delete: sdb
@@ -281,3 +287,5 @@ set expandtab       " Expand TABs to spaces
 "nnoremap <A-q> <C-w>q
 "nnoremap <A-=> <C-w>=
 
+" Two semicolons to exit.
+:imap ;; <Esc>

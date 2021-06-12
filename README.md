@@ -164,6 +164,8 @@ echo "default_linemode devicons" >> ~/.config/ranger/rc.conf
 
 nvim ~/.config/ranger/plugins/ranger_devicons/__init__.py
 
+(update icon of .h file)
+
 
 ( Delete to trash - use DD )
 $ nvim ~/.config/ranger/rc.conf
@@ -250,50 +252,76 @@ export VISUAL=nvim
 export EDITOR=nvim
 export BAT_THEME=gruvbox-dark
 
-alias sysupdate='sudo pacman -Syyu'
-alias sysinstall='sudo pacman -S'
-alias sysremove='sudo pacman -Rns'
-alias yayupdate='yay -Syyu'
-alias yayinstall='yay -S'
-alias yayremove='yay -Rns'
-alias syscheckorphans='sudo pacman -Qtdq'
-alias sysremoveorphans='sudo pacman -Rns $(pacman -Qtdq)'
-alias yayremoveorphans='yay -Yc'
-alias paccachecheck='paccache -d'
-alias paccacheremove='paccache -r'
+#------------------- System --------- syntax: s(sudo), y(yay), rm(remove), pcache(paccache)
+alias supdate='sudo pacman -Syyu'
+alias sinstall='sudo pacman -S'
+alias sremove='sudo pacman -Rns'
+alias yupdate='yay -Syyu'
+alias yinstall='yay -S'
+alias yremove='yay -Rns'
+alias sorphans='sudo pacman -Qtdq'
+alias srmorphans='sudo pacman -Rns $(pacman -Qtdq)'
+alias yrmorphans='yay -Yc'
+alias pcachecheck='paccache -d'
+alias pcacherm='paccache -r'
 alias cachecheck='sudo du -sh ~/.cache/'
-alias cacheremove='rm -rf ~/.cache/*'
+alias cacherm='rm -rf ~/.cache/*'
 alias chmodx='sudo chmod +x'
 
-alias i3archreadme='nvim ~/Linux/i3-gaps.Arch/README.md'
-alias i3archdir='cd ~/Linux/i3-gaps.Arch'
-alias archreadme='nvim ~/Linux/Arch/README.md'
-alias archdir='cd ~/Linux/Arch'
-alias i3config='nvim ~/.config/i3/config'
-alias i3dir='cd ~/.config/i3'
-alias i3blocksconfig='nvim ~/.config/i3blocks/config'
-alias i3blocksdir='cd ~/.config/i3blocks'
-alias tmuxconfig='sudo nvim ~/.tmux.conf'
+alias ex='exit'
+alias cl='clear'
+alias mk='make'
+alias smk='sudo make'
+alias mkcl='make clean'
+alias smkcl='sudo make clean'
+alias cpfile='cp -v -b -p'
+alias scpfile='sudo cp -v -b -p'
+alias cpdir='cp -r -v -b -p'
+alias scpdir='sudo cp -r -v -b -p'
+alias mvdir='mv -v -b'
+alias smvdir='sudo mv -v -b'
+
+#----------------- Config -------- rdm(readme), conf(config)
+alias i3archrdm='nvim ~/Linux/i3-gaps.Arch/README.md'
+alias archrdm='nvim ~/Linux/Arch/README.md'
+alias i3conf='nvim ~/.config/i3/config'
+alias i3blocksconf='nvim ~/.config/i3blocks/config'
+alias tmuxconf='sudo nvim ~/.tmux.conf'
 alias xinitrc='nvim ~/.xinitrc'
 alias bashrc='nvim ~/.bashrc'
 alias zshrc='nvim ~/.zshrc'
-alias kittyconfig='nvim ~/.config/kitty/kitty.conf'
-alias fontsdir='ranger ~/.local/share/fonts/'
-alias vlcmusic='vlc -I ncurses --no-video'
+alias kittyconf='nvim ~/.config/kitty/kitty.conf'
+alias nfconf='nvim ~/.config/neofetch/config.conf'
+alias nvconf='nvim ~/.config/nvim/init.vim'
 
+alias rgcommand='nvim ~/.config/ranger/commands.py'
+alias rgrc='nvim ~/.config/ranger/rc.conf'
+alias rgscope='nvim ~/.config/ranger/scope.sh'
+alias rgrifle='nvim ~/.config/ranger/rifle.conf'
+
+#---------------- Dir
+alias i3archdir='cd ~/Linux/i3-gaps.Arch'
+alias i3archdirrg='ranger ~/Linux/i3-gaps.Arch'
+alias archdir='cd ~/Linux/Arch'
+alias archdirrg='ranger ~/Linux/Arch'
+alias i3dir='cd ~/.config/i3'
+alias i3dirrg='ranger ~/.config/i3'
+alias i3blocksdir='cd ~/.config/i3blocks'
+alias i3blocksdirrg='ranger ~/.config/i3blocks'
+alias fontsdir='cd ~/.local/share/fonts'
+alias fontsdirrg='ranger ~/.local/share/fonts'
+alias rgdir='cd ~/.config/ranger'
+alias rgdirrg='ranger ~/.config/ranger'
+
+#--------------- Shortcut ------------- nf(neofetch), rg(ranger), f(find)
+alias snv='sudo nvim'
 alias nv='nvim'
-alias nvconfig='nvim ~/.config/nvim/init.vim'
 alias nvinstall='nvim +PlugInstall'
 alias nvupdate='nvim +PlugUpdate'
 alias nvclean='nvim +PlugClean'
 
 alias le='env EXA_ICON_SPACING=2 exa -lU --git --icons'
 alias lt='env EXA_ICON_SPACING=2 exa -TlUS --octal-permissions --git --icons --time-style long-iso'
-alias ra='ranger'
-alias ex='exit'
-alias cl='clear'
-alias mk='make'
-alias mkcl='make clean'
 
 alias gadd='git add .'
 alias gcommit='git commit'
@@ -302,7 +330,16 @@ alias gstatus='git status'
 alias gpush='git push'
 alias gpull='git pull'
 alias gclone='git clone'
-alias gconfig='git config'
+alias gconf='git config'
+
+alias rg='ranger'
+alias nf='neofetch'
+alias vlcmusic='vlc -I ncurses --no-video'
+
+alias ffile='find . -type f -iname' 
+alias fdir='find . -type d -iname'
+alias femptyfile='find . -type f -empty'
+alias femptydir='find . -type d -empty'
 
 
 ZLE_RPROMPT_INDENT=0
@@ -439,3 +476,21 @@ mkdir -p /usr/local/share/fonts
 sudo chmod 555 ~/.local/share/fonts/
 sudo chmod 444 ~/.local/share/fonts/*
 ```
+
+#### Firefox
+```
+(https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome)
+
+$ cd .mozilla/firefox
+$ le
+$ cd (...).default-release
+
+$ mkdir chrome      (cd chrome)
+$ mvdir ~/Linux/i3-gaps.Arch/Firefox/userChrome.css ~/.mozilla/firefox/(...).default-release/chrome/
+```
+
+#### Thunar (Open with terminal app)
+$ sudo nvim /usr/share/applications/nvim.desktop 
+
+Exec=kitty -e nvim %F
+Terminal=false
