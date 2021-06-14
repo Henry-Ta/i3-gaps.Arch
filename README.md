@@ -4,55 +4,61 @@
 
 ```
 $ nmtui
-$ sudo pacman -syy
+$ sudo pacman -Syy
 ```
 
-## install packages
+## Install packages
 
 ```
-$ sudo pacman -s xorg-server xfce4 xfce4-goodies (^6 ^11 | ^1 ^12 ^14 ^19 ^36)
+$ sudo pacman -S xorg-server xfce4 xfce4-goodies (^6 ^11 | ^1 ^12 ^14 ^19 ^36)
 $ xorg-xinitrc i3-gaps i3blocks rofi feh lxappearance ranger nvidia-lts/nvidia nvidia-utils nvidia-settings
 
-$ sudo pacman -s kitty qutebrowser firefox vlc gimp file-roller pavucontrol lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings evince galculator neofetch gufw clamtk libreoffice-fresh exa tmux bpytop bleachbit gpick
+$ sudo pacman -S kitty qutebrowser firefox vlc gimp file-roller pavucontrol lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings evince galculator neofetch gufw clamtk libreoffice-fresh exa tmux bpytop bleachbit gpick
 
 i3blocks -> (sysstat acpi acpilight)
 
 ( xf86-video-intel/xf86-video-amdgpu pcmanfm nnn picom geany geany-plugins nitrogen gpicview chromium)
 ```
 
-## prepare for start up
+## Prepare for start up
 
 ```
-$ cp /etc/x11/xinit/xinitrc .xinitrc
+$ cp /etc/X11/xinit/xinitrc .xinitrc
 $ nvim .xinitrc
 
 exec i3
 ```
 
 ```
-$ sudo systemctl enable lightdm ( if we use lightdm, otherwise "gdm" - gnome, "sddm" - kde )
+$ sudo systemctl enable lightdm ( if we use lightdm, otherwise "gdm" - GNOME, "sddm" - KDE )
 ```
 
-## post installation
+## Post Installation
+#### Set up dirs
+```
+$ mkdir Linux Projects
+$ cd ~/Pictures ; git clone https://github.com/henry-ta/Wallpapers ; cd ~/Linux ; git clone https://github.com/henry-ta/Arch ; git clone https://github.com/henry-ta/i3-gaps.Arch ; cd 
+$ cd ~/Projects ; git clone https://github.com/henry-ta/Retro ; cd ~/Documents ; git clone https://github.com/henry-ta/Langara ; git clone https://github.com/henry-ta/Self-Study ; cd
+```
 
 #### i3 config
 
 ```
 $ nvim ~/.config/i3/config
 
-( update rofi, kitty )
+( Update rofi, kitty )
 ```
 
-#### fonts
+#### Fonts
 
 ```
-$ sudo pacman -s otf-font-awesome otf-cascadia-code ttf-fira-code ttf-droid ttf-joypixels ttf-nerd-fonts-symbols
+$ sudo pacman -S otf-font-awesome otf-cascadia-code ttf-fira-code ttf-droid ttf-joypixels ttf-nerd-fonts-symbols
 ```
 
-#### install wifi for kernel module
+#### Install wifi for Kernel module
 
 ```
-* install
+* Install
 
 $ git clone https://github.com/lwfinger/rtw88.git
 $ cd rtw88
@@ -60,84 +66,84 @@ $ make
 $ sudo make install
 
 
-* disable/enable a kernel module
+* Disable/enable a kernel module
 
-$ sudo modprobe -r rtw_8723de         #this unloads the module
-$ sudo modprobe rtw_8723de            #this loads the module
+$ sudo modprobe -r rtw_8723de         #This unloads the module
+$ sudo modprobe rtw_8723de            #This loads the module
 
-* when kenel changes, have to update
+* When kenel changes, have to update
 $ cd ~/rtw88
 $ git pull
 $ make
 $ sudo make install
 ```
 
-#### neovim plug manager
+#### Neovim plug manager
 
 ```
-sh -c 'curl -flo "${xdg_data_home:-$home/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 ```
 
-#### install python packages
+#### Install Python packages
 
 ```
-$ sudo pacman -s python-pygame python-requests python-pandas python-beautifulsoup4
+$ sudo pacman -S python-pygame python-requests python-pandas python-beautifulsoup4
 
-($ sudo pacman -s python-pylint python-openpyxl )
+($ sudo pacman -S python-pylint python-openpyxl )
 ```
 
-#### install steam
+#### Install Steam
 
 ```
 $ sudo nvim /etc/pacman.conf
 [multilib]
-include = /etc/pacman.d/mirrorlist
+Include = /etc/pacman.d/mirrorlist
 
-$ sudo pacman -s wqy-zenhei steam
-choose nvidia vulcan (2)
+$ sudo pacman -S wqy-zenhei steam
+Choose Nvidia vulcan (2)
 ```
 
-#### install zsh
+#### Install zsh
 
 ```
-$ sudo pacman -s zsh
+$ sudo pacman -S zsh
 
-(set zsh default shell)
+(Set zsh default shell)
 $ chsh -s $(which zsh)
 
 (oh-my-zsh)
-$ sh -c "$(curl -fssl https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 (zsh-syntax-highlighting)
-$ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $zsh_custom/plugins/zsh-syntax-highlighting
+$ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
 $ nvim ~/.zshrc
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 (powerlevel10)
-$ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${zsh_custom:-$home/.oh-my-zsh/custom}/themes/powerlevel10k
+$ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 nvim ~/.zshrc
-$ zsh_theme="powerlevel10k/powerlevel10k"
+$ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 (zsh-autosuggestions)
-$ git clone https://github.com/zsh-users/zsh-autosuggestions.git $zsh_custom/plugins/zsh-autosuggestions
+$ git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 
 ```
 
-## app configures
+## App configures
 
-#### neovim
-
-```
-$ sudo pacman -s clang nodejs npm ctags the_silver_searcher gopls
-```
-
-#### ranger
+#### Neovim
 
 ```
-$ sudo pacman -s bat ueberzug elinks atool unrar ffmpegthumbnailer
+$ sudo pacman -S clang nodejs npm ctags the_silver_searcher gopls
+```
+
+#### Ranger
+
+```
+$ sudo pacman -S bat ueberzug elinks atool unrar ffmpegthumbnailer
 
 $ ranger --copy-config=all
 
@@ -152,32 +158,31 @@ set one_indexed true
 
 $ nvim .config/ranger/scope.sh
 
-(comment out pdf preview as images)
-(comment out video thumbnail)
+(Comment out pdf preview as images)
+(Comment out video thumbnail)
 
 
-( add icon to ranger )
+( Add icon to ranger )
 
-git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
+git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons ; echo "default_linemode devicons" >> ~/.config/ranger/rc.conf ; nvim ~/.config/ranger/plugins/ranger_devicons/__init__.py
 
-echo "default_linemode devicons" >> ~/.config/ranger/rc.conf
-
-nvim ~/.config/ranger/plugins/ranger_devicons/__init__.py
 
 (update icon of .h file)
+nvim ~/.config/ranger/plugins/ranger_devicons/devicons.py
 
 
-( delete to trash - use dd )
+( Delete to trash - use DD )
 $ nvim ~/.config/ranger/rc.conf
 
-map dd shell mv %s /home/${user}/.local/share/trash/files/
+map DD shell mv %s /home/${USER}/.local/share/Trash/files/
 
 
-(archive / extract)
+(Archive / Extract)
+$ nvim ~/.config/ranger/commands.py
 
-from ranger.core.loader import commandloader
+from ranger.core.loader import CommandLoader
 
-class extract_here(command):
+class extract_here(Command):
     def execute(self):
         """ extract selected files to current directory."""
         cwd = self.fm.thisdir
@@ -195,23 +200,23 @@ class extract_here(command):
         au_flags += ['-e']
 
         self.fm.copy_buffer.clear()
-        self.fm.cut_buffer = false
+        self.fm.cut_buffer = False
         if len(marked_files) == 1:
             descr = "extracting: " + os.path.basename(one_file.path)
         else:
             descr = "extracting files from: " + os.path.basename(
                 one_file.dirname)
-        obj = commandloader(args=['aunpack'] + au_flags
+        obj = CommandLoader(args=['aunpack'] + au_flags
                             + [f.path for f in marked_files], descr=descr,
-                            read=true)
+                            read=True)
 
         obj.signal_bind('after', refresh)
         self.fm.loader.add(obj)
 
 
-class compress(command):
+class compress(Command):
     def execute(self):
-        """ compress marked files to current directory """
+        """ Compress marked files to current directory """
         cwd = self.fm.thisdir
         marked_files = cwd.get_selection()
 
@@ -227,14 +232,14 @@ class compress(command):
         au_flags = parts[1:]
 
         descr = "compressing files in: " + os.path.basename(parts[1])
-        obj = commandloader(args=['apack'] + au_flags + \
-                [os.path.relpath(f.path, cwd.path) for f in marked_files], descr=descr, read=true)
+        obj = CommandLoader(args=['apack'] + au_flags + \
+                [os.path.relpath(f.path, cwd.path) for f in marked_files], descr=descr, read=True)
 
         obj.signal_bind('after', refresh)
         self.fm.loader.add(obj)
 
     def tab(self, tabnum):
-        """ complete with current folder name """
+        """ Complete with current folder name """
 
         extension = ['.zip', '.tar.gz', '.rar', '.7z']
         return ['compress ' + os.path.basename(self.fm.thisdir.path) + ext for ext in extension]
@@ -248,22 +253,22 @@ $ nvim .bashrc   /   nvim .zshrc
 
 force_color_prompt=yes
 
-export visual=nvim
-export editor=nvim
-export bat_theme=gruvbox-dark
+export VISUAL=nvim
+export EDITOR=nvim
+export BAT_THEME=gruvbox-dark
 
-#------------------- system --------- syntax: s(sudo), y(yay), rm(remove), pcache(paccache)
-alias supd='sudo pacman -syyu'
-alias sins='sudo pacman -s'
-alias srm='sudo pacman -rns'
+#------------------- System --------- syntax: s(sudo), y(yay), rm(remove), pcache(paccache)
+alias supd='sudo pacman -Syyu'
+alias sins='sudo pacman -S'
+alias srm='sudo pacman -Rns'
 
-alias yupd='yay -syyu'
-alias yins='yay -s'
-alias yrm='yay -rns'
+alias yupd='yay -Syyu'
+alias yins='yay -S'
+alias yrm='yay -Rns'
 
-alias sorphans='sudo pacman -qtdq'
-alias srmorphans='sudo pacman -rns $(pacman -qtdq)'
-alias yrmorphans='yay -yc'
+alias sorphans='sudo pacman -Qtdq'
+alias srmorphans='sudo pacman -Rns $(pacman -Qtdq)'
+alias yrmorphans='yay -Yc'
 alias pcachecheck='paccache -d'
 alias pcacherm='paccache -r'
 alias cachecheck='sudo du -sh ~/.cache/'
@@ -283,9 +288,9 @@ alias scpdir='sudo cp -r -v -b -p'
 alias mvdir='mv -v -b'
 alias smvdir='sudo mv -v -b'
 
-#----------------- config -------- rdm(readme), conf(config)
-alias i3gapsrdm='nvim ~/linux/i3-gaps.arch/readme.md'
-alias archrdm='nvim ~/linux/arch/readme.md'
+#----------------- Config -------- rdm(readme), conf(config)
+alias i3archrdm='nvim ~/Linux/i3-gaps.Arch/README.md'
+alias archrdm='nvim ~/Linux/Arch/README.md'
 alias i3conf='nvim ~/.config/i3/config'
 alias i3blocksconf='nvim ~/.config/i3blocks/config'
 alias tmuxconf='sudo nvim ~/.tmux.conf'
@@ -293,7 +298,7 @@ alias xinitrc='nvim ~/.xinitrc'
 alias bashrc='nvim ~/.bashrc'
 alias zshrc='nvim ~/.zshrc'
 alias kittyconf='nvim ~/.config/kitty/kitty.conf'
-alias neofetchconf='nvim ~/.config/neofetch/config.conf'
+alias nfconf='nvim ~/.config/neofetch/config.conf'
 alias nvconf='nvim ~/.config/nvim/init.vim'
 
 alias racommand='nvim ~/.config/ranger/commands.py'
@@ -301,11 +306,11 @@ alias rarc='nvim ~/.config/ranger/rc.conf'
 alias rascope='nvim ~/.config/ranger/scope.sh'
 alias rarifle='nvim ~/.config/ranger/rifle.conf'
 
-#---------------- dir
-alias i3gapsdir='cd ~/linux/i3-gaps.arch'
-alias i3gapsra='ranger ~/linux/i3-gaps.arch'
-alias archdir='cd ~/linux/arch'
-alias archra='ranger ~/linux/arch'
+#---------------- Dir
+alias i3archdir='cd ~/Linux/i3-gaps.Arch'
+alias i3archra='ranger ~/Linux/i3-gaps.Arch'
+alias archdir='cd ~/Linux/Arch'
+alias archra='ranger ~/Linux/Arch'
 alias i3dir='cd ~/.config/i3'
 alias i3ra='ranger ~/.config/i3'
 alias i3blocksdir='cd ~/.config/i3blocks'
@@ -315,15 +320,15 @@ alias fontsra='ranger ~/.local/share/fonts'
 alias radir='cd ~/.config/ranger'
 alias rara='ranger ~/.config/ranger'
 
-#--------------- shortcut ------------- nf(neofetch), rg(ranger), f(find)
+#--------------- Shortcut ------------- nf(neofetch), rg(ranger), f(find)
 alias snv='sudo nvim'
 alias nv='nvim'
-alias nvins='nvim +pluginstall'
-alias nvupd='nvim +plugupdate'
-alias nvcl='nvim +plugclean'
+alias nvins='nvim +PlugInstall'
+alias nvupd='nvim +PlugUpdate'
+alias nvcl='nvim +PlugClean'
 
-alias le='env exa_icon_spacing=2 exa -lu --git --icons'
-alias lt='env exa_icon_spacing=2 exa -tlus --octal-permissions --git --icons --time-style long-iso'
+alias le='env EXA_ICON_SPACING=2 exa -lU --git --icons'
+alias lt='env EXA_ICON_SPACING=2 exa -TlUS --octal-permissions --git --icons --time-style long-iso'
 
 alias gadd='git add .'
 alias gcommit='git commit'
@@ -333,10 +338,10 @@ alias gpush='git push'
 alias gpull='git pull'
 alias gclone='git clone'
 alias gconf='git config'
-alisa gapply='git apply'
 
 alias ra='ranger'
-alias vlcm='vlc -i ncurses --no-video'
+alias nf='neofetch'
+alias vlcm='vlc -I ncurses --no-video'
 
 alias ffile='find . -type f -iname' 
 alias fdir='find . -type d -iname'
@@ -345,35 +350,31 @@ alias femptydir='find . -type d -empty'
 
 alias rdm='nvim README.md'
 
-zle_rprompt_indent=0
+ZLE_RPROMPT_INDENT=0
 ```
 
 #### xbacklight scrolling
 
 ```
-$ su
-$ nvim /etc/sudoers
+$ sudo nvim /etc/sudoers
 
-%wheel all=(all) nopasswd: /usr/bin/xbacklight
+%wheel ALL=(ALL) NOPASSWD: /usr/bin/xbacklight
 ```
 
-#### lightdm settings
+#### Lightdm settings
 
 ```
-note: put png or jpg images in /usr/share/pixmaps
+Note: Put PNG or JPG images in /usr/share/pixmaps ; and configure
 
-$ sudo cp ~/pictures/wallpapers/1920x1080/lockscreen1.png /usr/share/pixmaps/
-
-
-$ sudo nvim /etc/lightdm/lightdm-gtk-greeter.conf
+$ sudo cp ~/Pictures/Wallpapers/1920x1080/lockscreen1.png /usr/share/pixmaps/ ; sudo nvim /etc/lightdm/lightdm-gtk-greeter.conf
 
 [greeter]
-theme-name = gruvbox-material-dark
-icon-theme-name = gruvbox-material-dark
-font-name = sans 16
+theme-name = Gruvbox-Material-Dark
+icon-theme-name = Gruvbox-Material-Dark
+font-name = Sans 16
 background = /usr/share/pixmaps/lockscreen1.png
 default-user-image = /usr/share/pixmaps/archlinux-logo.png
-clock-format = %a, %h-%d-%y (%h:%m:%s)
+clock-format = %A, %h-%d-%Y (%H:%M:%S)
 indicators = ~host;~spacer;~clock;~spacer;~session;~layout;~a11y;~power
 
 ```
@@ -385,7 +386,7 @@ $ nvim ~/.config/bpytop/bpytop.conf
 color_theme="gruvbox_dark"
 ```
 
-#### neofetch (default config)
+#### Neofetch (Default config)
 
 ```
 $ sudo nvim $(which neofetch)
@@ -393,106 +394,90 @@ $ sudo nvim $(which neofetch)
 arch_old (+3 space)
 ```
 
-#### install yay
+#### Install Yay
 
 ```
-$ cd /opt
-$ sudo git clone https://aur.archlinux.org/yay.git
-$ sudo chown -r henry:users ./yay
-$ cd yay
-$ makepkg -si
+$ cd /opt ; sudo git clone https://aur.archlinux.org/yay.git ; sudo chown -R henry:users ./yay ; cd yay ; makepkg -si
 ```
 
-#### install aur packages
+#### Install AUR packages
 
 ```
-$ yay -s zoom visual-studio-code-bin  gruvbox-material-gtk-theme-git gruvbox-material-icon-theme-git optimus-manager optimus-manager-qt picom-ibhagwan-git imagewriter
+$ yay -S zoom visual-studio-code-bin  gruvbox-material-gtk-theme-git gruvbox-material-icon-theme-git optimus-manager optimus-manager-qt picom-ibhagwan-git imagewriter
 
-( $ yay -s heroku-cli polybar gotop pamac-aur ttf-iosevka ttf-icomoon-feather ttf-font-icons)
+( $ yay -S heroku-cli polybar gotop pamac-aur ttf-iosevka ttf-icomoon-feather ttf-font-icons)
 
-( $ sudo systemctl enable optimus-manager )
-( $ sudo systemctl start optimus-manager )
+( $ sudo systemctl enable optimus-manager ; sudo systemctl start optimus-manager )
 ```
 
-#### no pass for pamac manager
+#### No pass for Pamac Manager
 
 ```
-$ su
-$ cd /etc/polkit-1/rules.d
-$ nvim 99-pamac.rules
+$ su ; cd /etc/polkit-1/rules.d ; nvim 99-pamac.rules
 
-polkit.addrule(function(action, subject) {
-	if (action.id.indexof("org.freedesktop.pamac-manager.")) {
-		return polkit.result.yes;
+polkit.addRule(function(action, subject) {
+	if (action.id.indexOf("org.freedesktop.pamac-manager.")) {
+		return polkit.Result.YES;
 	}
 });
 ```
 
-#### core editor of git
+#### Betterlockscreen
 
 ```
-$ git config --global core.editor 'nvim'
+$ sudo pacman -S xorg-xdpyinfo xorg-xrandr bc feh
+$ betterlockscreen -u Pictures/arch.png -b 1.0
 ```
 
-#### betterlockscreen
+#### Powerline Terminal
 
 ```
-$ sudo pacman -s xorg-xdpyinfo xorg-xrandr bc feh
-$ betterlockscreen -u pictures/arch.png -b 1.0
-```
-
-#### powerline terminal
-
-```
-osh_theme="cupcake" 	( .bashrc )
+OSH_THEME="cupcake" 	( .bashrc )
 $ nvim .oh-my-bash/themes/cupcake/cupcake.theme.sh
 ```
 
-#### failed to update core (unable to lock database)
+#### Failed to update core (unable to lock database)
 
 ```
 $ sudo rm /var/lib/pacman/db.lck
 ```
 
-#### qtcreator
+#### QtCreator
 
 ```
-enable run in terminal
+Enable run in terminal
 
 /usr/bin/kitty      -e
 
-$ mkdir -p ~/.config/qtproject/qtcreator/styles
-$ nvim ~/.config/qtproject/qtcreator/styles/gruvbox-dark.xml
+$ mkdir -p ~/.config/QtProject/qtcreator/styles
+$ nvim ~/.config/QtProject/qtcreator/styles/gruvbox-dark.xml
 ```
 
-#### oh-my-bash
+#### Oh-my-bash
 
 ```
-bash -c "$(curl -fssl https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
 ```
 
-#### install fonts manually
+#### Install fonts manually
 
 ```
 mkdir -p /usr/local/share/fonts
-
-sudo chmod 555 ~/.local/share/fonts/
-sudo chmod 444 ~/.local/share/fonts/*
 ```
 
-#### firefox
+#### Firefox
 ```
-(https://github.com/mrotherguy/firefox-csshacks/tree/master/chrome)
+(https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome)
 
 $ cd .mozilla/firefox
 $ le
 $ cd (...).default-release
 
 $ mkdir chrome      (cd chrome)
-$ mvdir ~/linux/i3-gaps.arch/firefox/userchrome.css ~/.mozilla/firefox/(...).default-release/chrome/
+$ cpdir ~/Linux/i3-gaps.Arch/Firefox/userChrome.css ~/.mozilla/firefox/(...).default-release/chrome/userChrome.css
 ```
 
-#### thunar (open with terminal app)
+#### Thunar (Open with terminal app)
 ```
 $ sudo nvim /usr/share/applications/nvim.desktop 
 
@@ -500,4 +485,3 @@ Exec=kitty -e nvim %F
 Terminal=false
 
 ```
-
