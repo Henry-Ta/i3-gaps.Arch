@@ -34,7 +34,7 @@ c.url.default_page = "about:blank"
 c.url.searchengines = {"DEFAULT": "https://www.google.ca/search?q={}"}
 
 # The page(s) to open at the start.
-c.url.start_pages = "https://youtube.com/"
+c.url.start_pages = "https://www.typing.com/student/tests"
 
 #--------------------------Colorscheme------------------#
 # base16-qutebrowser (https://github.com/theova/base16-qutebrowser)

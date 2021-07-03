@@ -31,6 +31,11 @@ call plug#begin('~/.config/nvim/plugged')
     " Show Error
     Plug 'scrooloose/syntastic'
 
+    " React 
+    Plug 'pangloss/vim-javascript'
+    Plug 'leafgarland/typescript-vim'
+    Plug 'maxmellon/vim-jsx-pretty'
+
 call plug#end()
 
 "-------------------------------------- Theme
@@ -288,4 +293,6 @@ set expandtab       " Expand TABs to spaces
 "nnoremap <A-=> <C-w>=
 
 " Two semicolons to exit.
-:imap ;; <Esc>
+":imap kj <Esc>
+
+:imap </ </<C-X><C-O>

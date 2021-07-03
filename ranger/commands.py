@@ -14,7 +14,7 @@ import os
 
 # You always need to import ranger.api.commands here to get the Command class:
 from ranger.api.commands import Command
-from ranger.core.loader import CommandLoader
+
 
 # Any class that is a subclass of "Command" will be integrated into ranger as a
 # command.  Try typing ":my_edit<ENTER>" in ranger!
@@ -61,6 +61,8 @@ class my_edit(Command):
         # content of the current directory.
         return self._tab_directory_content()
 
+
+from ranger.core.loader import CommandLoader
 
 class extract_here(Command):
     def execute(self):
@@ -123,3 +125,4 @@ class compress(Command):
 
         extension = ['.zip', '.tar.gz', '.rar', '.7z']
         return ['compress ' + os.path.basename(self.fm.thisdir.path) + ext for ext in extension]
+

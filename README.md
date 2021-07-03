@@ -13,11 +13,11 @@ $ sudo pacman -Syy
 $ sudo pacman -S xorg-server xfce4 xfce4-goodies (^6 ^11 | ^1 ^12 ^14 ^19 ^36)
 $ xorg-xinitrc i3-gaps i3blocks rofi feh lxappearance ranger nvidia-lts/nvidia nvidia-utils nvidia-settings
 
-$ sudo pacman -S kitty qutebrowser firefox vlc gimp file-roller pavucontrol lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings evince galculator neofetch gufw clamtk libreoffice-fresh exa tmux bpytop bleachbit gpick
+$ sudo pacman -S kitty qutebrowser firefox vlc gimp file-roller pavucontrol lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings evince galculator neofetch gufw clamtk libreoffice-fresh exa tmux gpick
 
 i3blocks -> (sysstat acpi acpilight)
 
-( xf86-video-intel/xf86-video-amdgpu pcmanfm nnn picom geany geany-plugins nitrogen gpicview chromium)
+( xf86-video-intel/xf86-video-amdgpu pcmanfm nnn picom geany geany-plugins nitrogen gpicview chromium bpytop bleachbit)
 ```
 
 ## Prepare for start up
@@ -34,10 +34,12 @@ $ sudo systemctl enable lightdm ( if we use lightdm, otherwise "gdm" - GNOME, "s
 ```
 
 ## Post Installation
+
 #### Set up dirs
+
 ```
 $ mkdir Linux Projects
-$ cd ~/Pictures ; git clone https://github.com/henry-ta/Wallpapers ; cd ~/Linux ; git clone https://github.com/henry-ta/Arch ; git clone https://github.com/henry-ta/i3-gaps.Arch ; cd 
+$ cd ~/Pictures ; git clone https://github.com/henry-ta/Wallpapers ; cd ~/Linux ; git clone https://github.com/henry-ta/Arch ; git clone https://github.com/henry-ta/i3-gaps.Arch ; cd
 $ cd ~/Projects ; git clone https://github.com/henry-ta/Retro ; cd ~/Documents ; git clone https://github.com/henry-ta/Langara ; git clone https://github.com/henry-ta/Self-Study ; cd
 ```
 
@@ -53,29 +55,6 @@ $ nvim ~/.config/i3/config
 
 ```
 $ sudo pacman -S otf-font-awesome otf-cascadia-code ttf-fira-code ttf-droid ttf-joypixels ttf-nerd-fonts-symbols
-```
-
-#### Install wifi for Kernel module
-
-```
-* Install
-
-$ git clone https://github.com/lwfinger/rtw88.git
-$ cd rtw88
-$ make
-$ sudo make install
-
-
-* Disable/enable a kernel module
-
-$ sudo modprobe -r rtw_8723de         #This unloads the module
-$ sudo modprobe rtw_8723de            #This loads the module
-
-* When kenel changes, have to update
-$ cd ~/rtw88
-$ git pull
-$ make
-$ sudo make install
 ```
 
 #### Neovim plug manager
@@ -137,7 +116,7 @@ $ git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plu
 #### Neovim
 
 ```
-$ sudo pacman -S clang nodejs npm ctags the_silver_searcher gopls
+$ sudo pacman -S nodejs npm ctags the_silver_searcher gopls clang
 ```
 
 #### Ranger
@@ -319,6 +298,8 @@ alias fontsdir='cd ~/.local/share/fonts'
 alias fontsra='ranger ~/.local/share/fonts'
 alias radir='cd ~/.config/ranger'
 alias rara='ranger ~/.config/ranger'
+alias nvdir='cd ~/.config/nvim'
+alias nvra='ranger ~/.config/nvim'
 
 #--------------- Shortcut ------------- nf(neofetch), rg(ranger), f(find)
 alias snv='sudo nvim'
@@ -340,7 +321,6 @@ alias gclone='git clone'
 alias gconf='git config'
 
 alias ra='ranger'
-alias nf='neofetch'
 alias vlcm='vlc -I ncurses --no-video'
 
 alias ffile='find . -type f -iname' 
@@ -350,7 +330,17 @@ alias femptydir='find . -type d -empty'
 
 alias rdm='nvim README.md'
 
+alias tsn='ts-node'
+alias lsver='lite-server'
+
+#--------------tmux
 ZLE_RPROMPT_INDENT=0
+
+#--------------Vietkey Bamboo
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+pidof ibus-daemon > /dev/null || ibus-daemon -drx
 ```
 
 #### xbacklight scrolling
@@ -403,11 +393,33 @@ $ cd /opt ; sudo git clone https://aur.archlinux.org/yay.git ; sudo chown -R hen
 #### Install AUR packages
 
 ```
-$ yay -S zoom visual-studio-code-bin  gruvbox-material-gtk-theme-git gruvbox-material-icon-theme-git optimus-manager optimus-manager-qt picom-ibhagwan-git imagewriter
+$ yay -S tlpui-git zoom visual-studio-code-bin gruvbox-material-gtk-theme-git gruvbox-material-icon-theme-git optimus-manager optimus-manager-qt picom-ibhagwan-git imagewriter ibus-bamboo
 
 ( $ yay -S heroku-cli polybar gotop pamac-aur ttf-iosevka ttf-icomoon-feather ttf-font-icons)
 
 ( $ sudo systemctl enable optimus-manager ; sudo systemctl start optimus-manager )
+```
+
+#### Firefox
+
+```
+(https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome)
+
+$ cd .mozilla/firefox
+$ le
+$ cd (...).default-release
+
+$ mkdir chrome      (cd chrome)
+$ cpdir ~/Linux/i3-gaps.Arch/Firefox/userChrome.css ./chrome/userChrome.css
+```
+
+#### Thunar (Open with terminal app)
+
+```
+$ sudo nvim /usr/share/applications/nvim.desktop
+
+Exec=kitty -e nvim %F
+Terminal=false
 ```
 
 #### No pass for Pamac Manager
@@ -465,23 +477,25 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/mast
 mkdir -p /usr/local/share/fonts
 ```
 
-#### Firefox
+#### Install wifi for Kernel module
+
 ```
-(https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome)
+* Install
 
-$ cd .mozilla/firefox
-$ le
-$ cd (...).default-release
+$ git clone https://github.com/lwfinger/rtw88.git
+$ cd rtw88
+$ make
+$ sudo make install
 
-$ mkdir chrome      (cd chrome)
-$ cpdir ~/Linux/i3-gaps.Arch/Firefox/userChrome.css ~/.mozilla/firefox/(...).default-release/chrome/userChrome.css
-```
 
-#### Thunar (Open with terminal app)
-```
-$ sudo nvim /usr/share/applications/nvim.desktop 
+* Disable/enable a kernel module
 
-Exec=kitty -e nvim %F
-Terminal=false
+$ sudo modprobe -r rtw_8723de         #This unloads the module
+$ sudo modprobe rtw_8723de            #This loads the module
 
+* When kenel changes, have to update
+$ cd ~/rtw88
+$ git pull
+$ make
+$ sudo make install
 ```
