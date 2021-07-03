@@ -300,6 +300,8 @@ alias radir='cd ~/.config/ranger'
 alias rara='ranger ~/.config/ranger'
 alias nvdir='cd ~/.config/nvim'
 alias nvra='ranger ~/.config/nvim'
+alias wallpapersdir='cd ~/Pictures/Wallpapers'
+alias wallpapersra='ranger ~/Pictures/Wallpapers'
 
 #--------------- Shortcut ------------- nf(neofetch), rg(ranger), f(find)
 alias snv='sudo nvim'
@@ -323,7 +325,7 @@ alias gconf='git config'
 alias ra='ranger'
 alias vlcm='vlc -I ncurses --no-video'
 
-alias ffile='find . -type f -iname' 
+alias ffile='find . -type f -iname'
 alias fdir='find . -type d -iname'
 alias femptyfile='find . -type f -empty'
 alias femptydir='find . -type d -empty'
