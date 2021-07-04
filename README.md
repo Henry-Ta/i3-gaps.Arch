@@ -3,7 +3,7 @@
 ## Active wifi from Network Manager
 
 ```
-$ nmtui
+$ (sudo wifi-menu)/(nmtui)
 $ sudo pacman -Syy
 ```
 
@@ -395,7 +395,7 @@ $ cd /opt ; sudo git clone https://aur.archlinux.org/yay.git ; sudo chown -R hen
 #### Install AUR packages
 
 ```
-$ yay -S tlpui-git zoom visual-studio-code-bin gruvbox-material-gtk-theme-git gruvbox-material-icon-theme-git optimus-manager optimus-manager-qt picom-ibhagwan-git imagewriter ibus-bamboo
+$ yay -S tlpui-git zoom visual-studio-code-bin gruvbox-material-gtk-theme-git gruvbox-material-icon-theme-git optimus-manager optimus-manager-qt picom-ibhagwan-git imagewriter ibus-bamboo (rtw88-dkms-git)
 
 ( $ yay -S heroku-cli polybar gotop pamac-aur ttf-iosevka ttf-icomoon-feather ttf-font-icons)
 
