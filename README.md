@@ -10,12 +10,13 @@ $ sudo pacman -Syy
 ## Install packages
 
 ```
-$ sudo pacman -S xorg-server xfce4 xfce4-goodies (^6 ^11 | ^1 ^12 ^14 ^19 ^36)
-$ xorg-xinitrc i3-gaps i3blocks rofi feh lxappearance ranger nvidia-lts/nvidia nvidia-utils nvidia-settings
+$ sudo pacman -S xorg-server xfce4 xfce4-goodies (^6 ^11 | ^1 ^12 ^14 ^19 ^36) lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
+i3gaps-> (xorg-xinitrc) i3-gaps i3blocks rofi feh lxappearance
+i3blocks -> sysstat acpi acpilight playerctl
 
-$ sudo pacman -S kitty qutebrowser firefox vlc gimp file-roller pavucontrol lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings evince galculator neofetch gufw clamtk libreoffice-fresh exa tmux gpick
+$ sudo pacman -S plasma-desktop sddm kde-applications ( 1 5 13 14 17 21 31 44 46 51 52 53 54 55 58 60 63 64 67 71 78 87 92 102 133 142 145 150 153 156 )
 
-i3blocks -> (sysstat acpi acpilight)
+$ sudo pacman -S ranger nvidia-lts/nvidia nvidia-utils nvidia-settings kitty qutebrowser firefox vlc gimp file-roller pavucontrol evince galculator neofetch gufw clamtk libreoffice-fresh exa tmux gpick obs-studio shotcut
 
 ( xf86-video-intel/xf86-video-amdgpu pcmanfm nnn picom geany geany-plugins nitrogen gpicview chromium bpytop bleachbit)
 ```
@@ -30,7 +31,7 @@ exec i3
 ```
 
 ```
-$ sudo systemctl enable lightdm ( if we use lightdm, otherwise "gdm" - GNOME, "sddm" - KDE )
+$ sudo systemctl enable lightdm ( "gdm" - GNOME, "sddm" - KDE )
 ```
 
 ## Post Installation
@@ -122,9 +123,8 @@ $ sudo pacman -S nodejs npm ctags the_silver_searcher gopls clang
 #### Ranger
 
 ```
-$ sudo pacman -S bat ueberzug elinks atool unrar ffmpegthumbnailer
+$ sudo pacman -S bat ueberzug elinks atool unrar ffmpegthumbnailer ; ranger --copy-config=all
 
-$ ranger --copy-config=all
 
 $ nvim .config/ranger/rc.conf
 
@@ -151,9 +151,7 @@ nvim ~/.config/ranger/plugins/ranger_devicons/devicons.py
 
 
 ( Delete to trash - use DD )
-$ nvim ~/.config/ranger/rc.conf
-
-map DD shell mv %s /home/${USER}/.local/share/Trash/files/
+echo "map DD shell mv %s /home/${USER}/.local/share/Trash/files/" >> ~/.config/ranger/rc.conf
 
 
 (Archive / Extract)
@@ -223,6 +221,12 @@ class compress(Command):
         extension = ['.zip', '.tar.gz', '.rar', '.7z']
         return ['compress ' + os.path.basename(self.fm.thisdir.path) + ext for ext in extension]
 
+
+(Update bat theme in ranger kind binding of i3conf)
+$ nvim ~/.config/ranger/scope.sh
+
+-> search bat
+--theme="gruvbox-dark"
 ```
 
 #### .bashrc / .zshrc
@@ -348,9 +352,7 @@ pidof ibus-daemon > /dev/null || ibus-daemon -drx
 #### xbacklight scrolling
 
 ```
-$ sudo nvim /etc/sudoers
-
-%wheel ALL=(ALL) NOPASSWD: /usr/bin/xbacklight
+$ sudo echo "%wheel ALL=(ALL) NOPASSWD: /usr/bin/xbacklight" >> /etc/sudoers
 ```
 
 #### Lightdm settings
@@ -395,11 +397,9 @@ $ cd /opt ; sudo git clone https://aur.archlinux.org/yay.git ; sudo chown -R hen
 #### Install AUR packages
 
 ```
-$ yay -S tlpui-git zoom visual-studio-code-bin gruvbox-material-gtk-theme-git gruvbox-material-icon-theme-git optimus-manager optimus-manager-qt picom-ibhagwan-git imagewriter ibus-bamboo (rtw88-dkms-git)
+$ yay -S tlpui-git zoom visual-studio-code-bin gruvbox-material-gtk-theme-git gruvbox-material-icon-theme-git optimus-manager optimus-manager-qt picom-ibhagwan-git imagewriter ibus-bamboo ; sudo systemctl enable optimus-manager ; sudo systemctl start optimus-manager
 
-( $ yay -S heroku-cli polybar gotop pamac-aur ttf-iosevka ttf-icomoon-feather ttf-font-icons)
-
-( $ sudo systemctl enable optimus-manager ; sudo systemctl start optimus-manager )
+( $ yay -S heroku-cli polybar gotop pamac-aur ttf-iosevka ttf-icomoon-feather ttf-font-icons rtw88-dkms-git)
 ```
 
 #### Firefox
@@ -411,8 +411,11 @@ $ cd .mozilla/firefox
 $ le
 $ cd (...).default-release
 
-$ mkdir chrome      (cd chrome)
-$ cpdir ~/Linux/i3-gaps.Arch/Firefox/userChrome.css ./chrome/userChrome.css
+$ mkdir chrome ; cpdir ~/Linux/i3-gaps.Arch/Firefox/userChrome.css ./chrome/userChrome.css
+
+(On Firefox browser)
+about:config
+legacy (toolkit.legacy...) -> true
 ```
 
 #### Thunar (Open with terminal app)
