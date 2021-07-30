@@ -12,11 +12,11 @@ $ sudo pacman -Syy
 ```
 $ sudo pacman -S xorg-server xfce4 xfce4-goodies (^6 ^11 | ^1 ^12 ^14 ^19 ^36) lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
 i3gaps-> (xorg-xinitrc) i3-gaps i3blocks rofi feh lxappearance
-i3blocks -> sysstat acpi acpilight playerctl
+i3blocks -> sysstat acpi acpilight playerctl (file-roller pavucontrol evince galculator gpick shotcut)
 
 $ sudo pacman -S plasma-desktop sddm kde-applications ( 1 5 13 14 17 21 31 44 46 51 52 53 54 55 58 60 63 64 67 71 78 87 92 102 133 142 145 150 153 156 )
 
-$ sudo pacman -S ranger nvidia-lts/nvidia nvidia-utils nvidia-settings kitty qutebrowser firefox vlc gimp file-roller pavucontrol evince galculator neofetch gufw clamtk libreoffice-fresh exa tmux gpick obs-studio shotcut
+$ sudo pacman -S ranger nvidia-lts/nvidia nvidia-utils nvidia-settings kitty qutebrowser firefox vlc gimp neofetch gufw clamtk libreoffice-fresh exa tmux obs-studio
 
 ( xf86-video-intel/xf86-video-amdgpu pcmanfm nnn picom geany geany-plugins nitrogen gpicview chromium bpytop bleachbit)
 ```
