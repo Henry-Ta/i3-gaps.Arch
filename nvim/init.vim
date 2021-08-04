@@ -146,8 +146,36 @@ let g:NERDTreeWinPos = 'right'
 "let g:NERDTreeGitStatusUseNerdFonts = 1
 
 "------------------------------------- Devicons
-set guifont=DroidSansMono\ Nerd\ Font\ 12
+"set guifont=DroidSansMono\ Nerd\ Font\ 12
 let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" airline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+
 
 "" rounded separators (extra-powerline-symbols):
 "let g:airline_left_sep = "\uE0B4"
@@ -295,4 +323,4 @@ set expandtab       " Expand TABs to spaces
 " Two semicolons to exit.
 ":imap kj <Esc>
 
-:imap </ </<C-X><C-O>
+":imap </ </<C-X><C-O>

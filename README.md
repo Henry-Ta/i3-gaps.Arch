@@ -10,11 +10,15 @@ $ sudo pacman -Syy
 ## Install packages
 
 ```
+(XFCE)
 $ sudo pacman -S xorg-server xfce4 xfce4-goodies (^6 ^11 | ^1 ^12 ^14 ^19 ^36) lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
-i3gaps-> (xorg-xinitrc) i3-gaps i3blocks rofi feh lxappearance
+
+(i3)
+i3gaps-> (xorg-xinit) i3-gaps i3blocks rofi feh lxappearance
 i3blocks -> sysstat acpi acpilight playerctl (file-roller pavucontrol evince galculator gpick shotcut)
 
-$ sudo pacman -S plasma-desktop sddm plasma-nm plasma-pa kdeplasma-addons powerdevil apper gwenview kcolorchooser kdenlive okular discover kamoso dolphin ark calculator kmag
+(KDE)
+$ sudo pacman -S plasma sddm powerdevil apper gwenview kcolorchooser kdenlive okular discover kamoso dolphin ark kmag
 ($ sudo pacman -S plasma-desktop plasma-nm sddm kde-applications ( 1 5 13 14 17 21 31 44 46 51 52 53 54 55 58 60 63 64 67 71 78 87 92 102 133 142 145 150 153 156 ) )
 
 $ sudo pacman -S ranger nvidia-lts/nvidia nvidia-utils nvidia-settings kitty qutebrowser firefox vlc gimp neofetch gufw clamtk libreoffice-fresh exa tmux obs-studio
@@ -78,36 +82,25 @@ $ sudo pacman -S python-pygame python-requests python-pandas python-beautifulsou
 #### Install Steam
 
 ```
-$ sudo nvim /etc/pacman.conf
+$ sudo nvim /etc/pacman.conf ; sudo pacman -S wqy-zenhei steam
+
 [multilib]
 Include = /etc/pacman.d/mirrorlist
 
-$ sudo pacman -S wqy-zenhei steam
 Choose Nvidia vulcan (2)
 ```
 
 #### Install zsh
 
 ```
-$ sudo pacman -S zsh
+$ sudo pacman -S zsh; chsh -s $(which zsh); sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"; git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting; nvim ~/.zshrc
 
-(Set zsh default shell)
-$ chsh -s $(which zsh)
-
-(oh-my-zsh)
-$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-(zsh-syntax-highlighting)
-$ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
-
-$ nvim ~/.zshrc
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 (powerlevel10)
 $ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
-nvim ~/.zshrc
-$ ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 (zsh-autosuggestions)
 $ git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
@@ -125,10 +118,8 @@ $ sudo pacman -S nodejs npm ctags the_silver_searcher gopls clang
 #### Ranger
 
 ```
-$ sudo pacman -S bat ueberzug elinks atool unrar ffmpegthumbnailer ; ranger --copy-config=all
+$ sudo pacman -S bat ueberzug elinks atool unrar ffmpegthumbnailer ; ranger --copy-config=all; nvim .config/ranger/rc.conf; nvim .config/ranger/scope.sh; git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons ; echo "default_linemode devicons" >> ~/.config/ranger/rc.conf ; nvim ~/.config/ranger/plugins/ranger_devicons/__init__.py; echo "map DD shell mv %s /home/${USER}/.local/share/Trash/files/" >> ~/.config/ranger/rc.conf; nvim ~/.config/ranger/commands.py; nvim ~/.config/ranger/scope.sh
 
-
-$ nvim .config/ranger/rc.conf
 
 set preview_images true
 set preivew_images_method ueberzug
@@ -137,27 +128,9 @@ set line_number relative
 set one_indexed true
 
 
-$ nvim .config/ranger/scope.sh
-
 (Comment out pdf preview as images)
 (Comment out video thumbnail)
 
-
-( Add icon to ranger )
-
-git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons ; echo "default_linemode devicons" >> ~/.config/ranger/rc.conf ; nvim ~/.config/ranger/plugins/ranger_devicons/__init__.py
-
-
-(update icon of .h file)
-nvim ~/.config/ranger/plugins/ranger_devicons/devicons.py
-
-
-( Delete to trash - use DD )
-echo "map DD shell mv %s /home/${USER}/.local/share/Trash/files/" >> ~/.config/ranger/rc.conf
-
-
-(Archive / Extract)
-$ nvim ~/.config/ranger/commands.py
 
 from ranger.core.loader import CommandLoader
 
@@ -224,11 +197,14 @@ class compress(Command):
         return ['compress ' + os.path.basename(self.fm.thisdir.path) + ext for ext in extension]
 
 
-(Update bat theme in ranger kind binding of i3conf)
-$ nvim ~/.config/ranger/scope.sh
 
+(Update bat theme in ranger kind binding of i3conf)
 -> search bat
 --theme="gruvbox-dark"
+
+
+(update icon of .h file)
+nvim ~/.config/ranger/plugins/ranger_devicons/devicons.py
 ```
 
 #### .bashrc / .zshrc
@@ -399,9 +375,9 @@ $ cd /opt ; sudo git clone https://aur.archlinux.org/yay.git ; sudo chown -R hen
 #### Install AUR packages
 
 ```
-$ yay -S tlpui-git zoom visual-studio-code-bin gruvbox-material-gtk-theme-git gruvbox-material-icon-theme-git optimus-manager optimus-manager-qt picom-ibhagwan-git imagewriter ibus-bamboo ; sudo systemctl enable optimus-manager ; sudo systemctl start optimus-manager
+$ yay -S tlpui-git zoom visual-studio-code-bin  optimus-manager optimus-manager-qt imagewriter ibus-bamboo ; sudo systemctl enable optimus-manager ; sudo systemctl start optimus-manager
 
-( $ yay -S heroku-cli polybar gotop pamac-aur ttf-iosevka ttf-icomoon-feather ttf-font-icons rtw88-dkms-git)
+( $ yay -S gruvbox-material-gtk-theme-git gruvbox-material-icon-theme-git  picom-ibhagwan-git heroku-cli polybar gotop pamac-aur ttf-iosevka ttf-icomoon-feather ttf-font-icons rtw88-dkms-git)
 ```
 
 #### Firefox
