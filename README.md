@@ -14,7 +14,8 @@ $ sudo pacman -S xorg-server xfce4 xfce4-goodies (^6 ^11 | ^1 ^12 ^14 ^19 ^36) l
 i3gaps-> (xorg-xinitrc) i3-gaps i3blocks rofi feh lxappearance
 i3blocks -> sysstat acpi acpilight playerctl (file-roller pavucontrol evince galculator gpick shotcut)
 
-$ sudo pacman -S plasma-desktop sddm kde-applications ( 1 5 13 14 17 21 31 44 46 51 52 53 54 55 58 60 63 64 67 71 78 87 92 102 133 142 145 150 153 156 )
+$ sudo pacman -S plasma-desktop sddm plasma-nm plasma-pa kdeplasma-addons powerdevil apper gwenview kcolorchooser kdenlive okular discover kamoso dolphin ark calculator kmag
+($ sudo pacman -S plasma-desktop plasma-nm sddm kde-applications ( 1 5 13 14 17 21 31 44 46 51 52 53 54 55 58 60 63 64 67 71 78 87 92 102 133 142 145 150 153 156 ) )
 
 $ sudo pacman -S ranger nvidia-lts/nvidia nvidia-utils nvidia-settings kitty qutebrowser firefox vlc gimp neofetch gufw clamtk libreoffice-fresh exa tmux obs-studio
 
@@ -318,9 +319,9 @@ alias le='env EXA_ICON_SPACING=2 exa -lU --git --icons'
 alias lt='env EXA_ICON_SPACING=2 exa -TlUS --octal-permissions --git --icons --time-style long-iso'
 
 alias gadd='git add .'
-alias gcommit='git commit'
+alias gcomm='git commit'
 alias glog='git log --graph --all'
-alias gstatus='git status'
+alias gstat='git status'
 alias gpush='git push'
 alias gpull='git pull'
 alias gclone='git clone'
