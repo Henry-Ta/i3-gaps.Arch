@@ -42,7 +42,8 @@ $ sudo systemctl enable lightdm ( "gdm" - GNOME, "sddm" - KDE )
 ```
 $ mkdir Linux Projects
 $ cd ~/Pictures ; git clone https://github.com/henry-ta/Wallpapers ; cd ~/Linux ; git clone https://github.com/henry-ta/Arch ; git clone https://github.com/henry-ta/i3-gaps.Arch ; cd
-$ cd ~/Projects ; git clone https://github.com/henry-ta/Retro ; cd ~/Documents ; git clone https://github.com/henry-ta/Langara ; git clone https://github.com/henry-ta/Self-Study ; cd
+$ cd ~/Documents ; git clone https://github.com/henry-ta/Langara ; git clone https://github.com/henry-ta/Self-Study ; cd
+$ cd ~/Projects ; git clone https://github.com/henry-ta/Retro ;
 ```
 
 #### i3 config
