@@ -18,7 +18,7 @@ i3gaps-> (xorg-xinit) i3-gaps i3blocks rofi feh lxappearance
 i3blocks -> sysstat acpi acpilight playerctl (file-roller pavucontrol evince galculator gpick shotcut)
 
 (KDE)
-$ sudo pacman -S plasma sddm powerdevil apper gwenview kcolorchooser kdenlive okular discover kamoso dolphin ark kmag
+$ sudo pacman -S plasma-desktop plasma-nm plasma-pa kdeplasma-addons kde-gtk-config sddm sddm-kcm powerdevil apper gwenview kcolorchooser kdenlive okular discover kamoso dolphin ark kmag
 ($ sudo pacman -S plasma-desktop plasma-nm sddm kde-applications ( 1 5 13 14 17 21 31 44 46 51 52 53 54 55 58 60 63 64 67 71 78 87 92 102 133 142 145 150 153 156 ) )
 
 $ sudo pacman -S ranger nvidia-lts/nvidia nvidia-utils nvidia-settings kitty qutebrowser firefox vlc gimp neofetch gufw clamtk libreoffice-fresh exa tmux obs-studio
