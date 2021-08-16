@@ -347,7 +347,7 @@ $ cd /opt ; sudo git clone https://aur.archlinux.org/yay.git ; sudo chown -R hen
 #### Install AUR packages
 
 ```
-$ yay -S tlpui-git zoom visual-studio-code-bin  (optimus-manager)/(optimus-manager-qt) imagewriter ibus-bamboo ; sudo systemctl enable optimus-manager ; sudo systemctl start optimus-manager
+$ yay -S tlpui-git zoom visual-studio-code-bin  (optimus-manager)/(optimus-manager-qt) imagewriter ibus-bamboo ; sudo systemctl enable optimus-manager ; sudo systemctl start optimus-manager woeusb-gui
 
 ( $ yay -S gruvbox-material-gtk-theme-git gruvbox-material-icon-theme-git  picom-ibhagwan-git heroku-cli polybar gotop pamac-aur ttf-iosevka ttf-icomoon-feather ttf-font-icons rtw88-dkms-git)
 ```
